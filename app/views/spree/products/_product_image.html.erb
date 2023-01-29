@@ -1,0 +1,12 @@
+<picture class="product-image">
+  <% if product.gallery.images.first.present? %>
+    <%= render(ImageComponent.new(
+      image: product.gallery.images.first,
+      size: :product,
+      itemprop: "image",
+      data: { js: 'product-main-image' }
+    )) %>
+  <% else %>
+    <%= image_tag "placeholder_products.jpg"%>
+  <% end %>
+</picture>

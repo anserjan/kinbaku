@@ -1,0 +1,46 @@
+en:
+  spree:
+    partition: Partitioning
+    partition_enums:
+      text_50_images_50: Text left 50%, Gallery right 50%
+      text_67_images_33: Text left 67%, Gallery right 33%
+      text_33_images_67: Text left 33%, Gallery right 67%
+      images_50_text_50: Gallery left 50%, Text right 50%
+      images_67_text_33: Gallery left 67%, Text right 33%
+      images_33_text_67: Gallery left 33%, Text right 67%
+    body_1: Text
+    body_left: Text left column
+    body_center: Text center column
+    body_right: Text right column
+    body_first: Text first Column
+    body_second: Text second Column
+    body_third: Text third Column
+    body_fourth: Text fourth Column
+    body_fifth: Text fifth Column
+    body_sixth: Text sixth Column
+    content_block: Content Block
+    content_blocks: Content Blocks
+    for_page: for page
+    new_content_block: New Content Block
+    block_name: Block Name
+    content_type: Content-Type
+    content_types:
+      richtext: Text
+      images: Pictures
+      richtext_2: Text two columns
+      richtext_3: Text three columns
+      richtext_4: Text four columns
+      richtext_6: Text six columns
+      richtext_images: Text Column and Gallery Column
+      embed: Embed Code Code (i.e. iframe)
+      product_preview: Product Preview
+      taxon_preview: Taxon Preview
+    new_content_block: New Content Block
+    add_content_image: Add Picture
+    content_image_teasertext: "Text"
+    edit_content_block: Edit Content Block
+    delete_content_block: Delete Content Block
+    no_content_block_found: No Content Block Found
+    back_to_page: Back to Page
+    back_to_content_block: Back to Content Block
+    visible: Visible

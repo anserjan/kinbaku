@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-4">
+    <%= f.field_container :attachment do %>
+      <%= f.label :attachment %><br />
+      <%= f.file_field :attachment %>
+      <%= f.error_message_on :attachment %>
+    <% end %>
+  </div>
+
+  <div class="col-8">
+    <%= f.field_container :alt do %>
+      <%= f.label :alt, I18n.t("spree.content_image_teasertext") %><br />
+      <%= f.text_area :alt, rows: 2, class:"fullwidth" %>
+    <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,1 @@
+Spree::Page.include PageContentBlocks

@@ -1,0 +1,85 @@
+<% admin_breadcrumb(link_to plural_resource_name(Spree::LegacyUser), spree.admin_users_path) %>
+<% admin_breadcrumb(@user.valid? ? @user.email : @user.email_was) %>
+<% admin_breadcrumb(plural_resource_name(Spree::Deposit)) %>
+
+<%= render 'spree/admin/users/tabs', current: :deposits %>
+<fieldset>
+  <legend><%= plural_resource_name(Spree::Deposit)%></legend>
+  
+  <div class="row">
+    <div class="col-6">
+      <table>
+        <colgroup>
+          <col style="width: 50%;">
+          <col style="width: 20%;">
+          <col style="width: 20%;">
+          <col style="width: 10%;">
+        </colgroup>
+        <thead>
+          <th><%= I18n.t("spree.description") %></th>
+          <th class="align-right"><%= I18n.t("spree.date") %></th>
+          <th class="align-right"><%= I18n.t("spree.amount") %></th>
+          <th class="action"></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-weight-bold"><%= I18n.t("spree.remaining_cash") %></td>
+            <td></td>
+            <td class="align-right font-weight-bold"><%= Spree::Money.new(@user.cash_remaining) %></td>
+            <td></td>
+          </tr>
+          <% @user.deposits.sort { |a, b| b.deposit_date <=> a.deposit_date }.each do |deposit| %>
+            <tr>
+              <td><%= deposit.description %></td>
+              <td class="align-right"><%= deposit.deposit_date.strftime("%Y-%m-%d") %></td>
+              <td class="align-right"><%= Spree::Money.new(deposit.amount) %></td>
+              <td class="action align-right">
+                <%= link_to_with_icon "trash", I18n.t("spree.delete"), admin_user_deposit_url(@user, deposit), method: :delete, no_text: true, data: { action: :void }  %>
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <td class="font-weight-bold"><%= I18n.t("spree.total_cash") %></td>
+            <td></td>
+            <td class="align-right font-weight-bold"><%= Spree::Money.new(@user.cash_amount) %></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6">
+      <%= form_for [:admin, @user, @deposit], url: deposits_admin_user_url(@user) do |f| %>
+        <div class="row">
+          <div class="col-12">
+            <div data-hook="admin_product_form_price">
+              <%= f.label I18n.t('spree.deposit'), class: "required" %>
+              <%= render "spree/admin/shared/number_with_currency",
+                          f: f,
+                          amount_attr: :amount,
+                          required: true,
+                          currency: Spree::Config.default_pricing_options.currency %>
+              <%= f.error_message_on :amount %>
+            </div>
+          </div>
+          <div class="col-12">
+            <%= f.label :deposit_date, class: "required" %>
+            <%= render "spree/admin/shared/datepicker", f: f, date_attr: :deposit_date, required: true %>
+          </div>
+          <div class="col-12">
+            <%= f.field_container :description do %>
+              <%= f.label :description %>
+              <%= f.text_field :description, class: "fullwidth", value: "Deposit" %>
+            <% end %>
+          </div>
+        </div>
+        <%= f.hidden_field :user_id, value: @user.id %>
+        <div class="form-buttons filter-actions actions">
+          <%= f.button I18n.t('spree.actions.create'), class: 'btn btn-primary', name: :commit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  
+</fieldset>

@@ -1,0 +1,26 @@
+<%= f.hidden_field :page_id, value: @page.id %>
+
+<%= f.field_container :content_type do %>
+  <%= f.label :content_type, I18n.t("spree.content_type") %> <span class="required">*</span><br />
+  <%= f.select :content_type,
+               Spree::ContentBlock::available_content_types.
+               map { |ct| [I18n.t("spree.content_types.#{ct}"), ct] }, {},
+               { class: "title fullwidth select2" } %>
+  <%= f.error_message_on :content_type %>
+<% end %>
+
+<% if @content_block.content_type.present? %>
+  <%= f.field_container :block_name do %>
+    <%= f.label :block_name, I18n.t("spree.block_name") %><br />
+    <%= f.text_field :block_name, class: 'fullwidth title' %>
+    <%= f.error_message_on :block_name %>
+  <% end %>
+
+  <%= f.field_container :visible do %>
+    <%= f.check_box :visible %>
+    <%= f.label :visible, I18n.t("spree.visible") %>
+  <% end %>
+
+  <%= render partial: "/spree/admin/content_blocks/content_types/#{@content_block.content_type}", locals: { f: f } %>
+
+<% end %>

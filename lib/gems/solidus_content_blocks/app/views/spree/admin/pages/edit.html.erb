@@ -1,0 +1,19 @@
+<%# override to add link to content blocks %>
+
+<% content_for :page_title do %>
+   <%= I18n.t("spree.static_pages") %>: <%= I18n.t("spree.editing_page") %> "<%= @page.title%>"
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= link_to I18n.t("spree.content_blocks"), admin_page_content_blocks_url(@page), class: "btn btn-primary" %></li>
+  <li><%= link_to I18n.t("spree.back_to_static_pages_list"), spree.admin_pages_url, class: "btn btn-primary" %></li>
+<% end %>
+
+<%= render "spree/shared/error_messages", :target => @page %>
+
+<%= form_for [:admin, @page] do |f| %>
+  <fieldset class="no-border-top">
+    <%= render partial: 'form', :locals => { :f => f } %>
+    <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>

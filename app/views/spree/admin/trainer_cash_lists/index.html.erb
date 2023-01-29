@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-12">
+    <%= form_with action: :show, method: :get do |f| %>
+      <fieldset class="no-border-top">
+        <div>
+          <%= f.label :trainer, I18n.t("spree.trainer") %>
+          <%= f.select :trainer_id,
+            @trainers_collection,
+            { selected: @choosen_id },
+            { class: "custom-select" }
+          %>
+        </div>
+        <div class="form-buttons filter-actions actions" data-hook="buttons">
+          <%= button_tag t("spree.get_cash_list"), class: "btn btn-primary" %>
+        </div>
+      </fieldset>
+    <% end %>
+
+    <% if @trainers.present? %>
+      <%= render partial: "trainers_list", locals: { trainers: @trainers } %>
+    <% elsif @trainer.present? %>
+      <%= render partial: "trainers_list", locals: { trainers: [@trainer] } %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<%= f.field_container :product_id do %>
+  <%= f.label :product_id, I18n.t("spree.product") %><br />
+  <%= f.select :product_id,
+               Spree::Product.available.
+               map { |p| [p.name, p.id] }, {},
+               { class: "title fullwidth select2" } %>
+  <%= f.error_message_on :product_id %>
+<% end %>

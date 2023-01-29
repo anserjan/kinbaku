@@ -1,0 +1,30 @@
+module SolidusContentBlocks
+  class Engine < Rails::Engine
+    engine_name 'solidus_content_blocks'
+
+    config.autoload_paths += %W(#{config.root}/lib)
+
+    config.content_block_types = [
+      "richtext", "images", "richtext_2", "richtext_3", "richtext_4", "richtext_6",
+      "richtext_images", "embed", "product_preview", "taxon_preview"
+    ]
+
+    config.partition_enums = [
+      "text_50_images_50", "text_67_images_33", "text_33_images_67",
+      "images_50_text_50", "images_67_text_33", "images_33_text_67"
+    ]
+
+    # use rspec for tests
+    config.generators do |g|
+      g.test_framework :rspec
+    end
+
+    def self.activate
+      Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
+      end
+    end
+
+    config.to_prepare &method(:activate).to_proc
+  end
+end

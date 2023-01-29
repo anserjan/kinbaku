@@ -1,0 +1,16 @@
+<% content_for :page_title do %>
+  <%= @menu_bar.name %> <%= I18n.t("spree.menus") %>: <%= I18n.t("menus.edit_menu") %> "<%= @menu.link_text%>"
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= link_to I18n.t("menus.back"), admin_menu_bar_menus_path(@menu_bar), class: "btn btn-primary" %></li>
+<% end %>
+
+<%= render "spree/shared/error_messages", :target => @menu %>
+
+<%= form_for [:admin, @menu_bar, @menu] do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>

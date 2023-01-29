@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-12">
+    <%= form_for [:admin, @product] do |f| %>
+      <fieldset class="no-border-top">
+        <div>
+          <%= f.field_container :trainer do %>
+            <%= f.label :trainer_id, I18n.t('spree.trainer') %>
+            <%= f.select :trainer_id, @product.trainer_list, { include_blank: t('spree.match_choices.none') }, { class: 'custom-select' } %>
+            <%= f.error_message_on :trainer %>
+          <% end %>
+        </div>
+        <div class="form-buttons filter-actions actions" data-hook="buttons">
+          <%= button_tag t('spree.actions.update'), class: 'btn btn-primary' %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

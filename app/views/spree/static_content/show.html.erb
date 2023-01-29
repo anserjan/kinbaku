@@ -1,0 +1,17 @@
+<% if @page.layout.present? and @page.render_layout_as_partial? %>
+  <%= render :partial => @page.layout %>
+<% else %>
+  <% content_for :sidebar do %>
+    <div data-hook="homepage_sidebar_navigation">
+      <% if "spree/products" == params[:controller] && @taxon %>
+        <%= render partial: 'spree/shared/filters' %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="products">
+    <h1 class="products__taxon-title"><%= @page.title %></h1>
+    <section class="products__results-title" id="page_content">
+      <%= raw @page.body %>
+    </section>
+  </div>
+<% end %>

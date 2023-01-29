@@ -1,0 +1,52 @@
+<%# override to add link to content blocks %>
+
+<% content_for :page_actions do %>
+  <li><%= link_to I18n.t("spree.new_page"), new_object_url, id: 'admin_new_page', class: "btn btn-primary" %></li>
+<% end %>
+
+<% content_for :page_title do %>
+   <%= I18n.t("spree.static_pages") %>
+<% end %>
+
+<% if @pages.any? %>
+<table class="index responsive" id="listing_pages">
+  <thead>
+    <tr>
+      <th><%= Spree::Page.human_attribute_name(:title) %></th>
+      <th><%= I18n.t("spree.link") %></th>
+      <th><%= Spree::Page.human_attribute_name(:visible) %></th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr class="<%= cycle('odd', 'even') %>" id="<%= dom_id page %>">
+        <td>
+          <%= page.title %>
+        </td>
+        <td>
+          <%= link_to page.link, page.link, :target => '_blank' %>
+        </td>
+        <td>
+         <span class='pill pill-<%= page.visible ? 'active' : 'inactive' %>'>
+            <%= t("spree.#{page.visible? ? :active : :inactive}") %>
+          </span>
+        </td>
+        <td class="actions" data-hook="admin_pages_index_row_actions">
+          <%= link_to "", admin_page_content_blocks_url(page),
+                      class: "fa fa-list icon_link with-tip no-text",
+                      data: { "original-title": I18n.t("spree.content_blocks") } %>
+          <%= link_to_edit page, :no_text => true %>
+          <%= link_to_delete page, :no_text => true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    <%= I18n.t(:no_resource_found, resource: I18n.t(:other, scope: 'activerecord.models.spree/page')) %>,
+    <%= link_to I18n.t(:add_one), spree.new_admin_page_path %>!
+  </div>
+<% end %>

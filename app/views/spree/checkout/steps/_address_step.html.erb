@@ -1,0 +1,38 @@
+<% order = form.object %>
+
+<div class="address-step">
+  <fieldset class="address-step__billing" id="billing">
+    <legend>
+      <%= t("spree.billing_address") %>
+    </legend>
+
+    <%= form.fields_for :bill_address do |bill_form| %>
+      <%= render(
+        "spree/checkout/steps/address_step/address_inputs",
+        form: bill_form,
+        address_type: "billing",
+        address: order.bill_address
+      ) %>
+    <% end %>
+  </fieldset>
+
+  <div class="address-step__actions">
+    <%= form.button(
+      I18n.t("spree.save_and_continue"),
+      class: 'button-primary',
+      name: :commit
+    ) %>
+
+    <% if spree_current_user %>
+      <%= label_tag 'save-user-address', class: 'checkbox-input' do %>
+        <%= check_box_tag(
+          :save_user_address,
+          1,
+          spree_current_user.respond_to?(:persist_order_address),
+          id: 'save-user-address'
+        ) %>
+        <%= I18n.t("spree.save_my_address") %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

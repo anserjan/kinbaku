@@ -1,0 +1,47 @@
+de:
+  spree:
+    partition: Aufteilung
+    partition_enums:
+      text_50_images_50: Text links 50%, Galerie rechts 50%
+      text_67_images_33: Text links 67%, Galerie rechts 33%
+      text_33_images_67: Text links 33%, Galerie rechts 67%
+      images_50_text_50: Galerie links 50%, Text rechts 50%
+      images_67_text_33: Galerie links 67%, Text rechts 33%
+      images_33_text_67: Galerie links 33%, Text rechts 67%
+    subtaxon: Unterkategorie
+    body_1: Text
+    body_left: Text linke Spalte
+    body_center: Text mittlere Spalte
+    body_right: Text rechte Spalte
+    body_first: Text erste Spalte
+    body_second: Text zweite Spalte
+    body_third: Text dritte Spalte
+    body_fourth: Text vierte Spalte
+    body_fifth: Text fünfte Spalte
+    body_sixth: Text sechste Spalte
+    content_block: Inhaltsblock
+    content_blocks: Inhaltsblöcke
+    for_page: für Seite
+    new_content_block: Neuer Inhaltsblock
+    block_name: Block Bezeichnung
+    content_type: Inhalts-Typ
+    content_types:
+      richtext: Text
+      images: Bilder
+      richtext_2: Text zweispaltig
+      richtext_3: Text dreispaltig
+      richtext_4: Text vierspaltig
+      richtext_6: Text sechspaltig
+      richtext_images: Textspalte und Galeriespalte
+      embed: Eingebetteter Code (z.B. iframe)
+      product_preview: Produktvorschau
+      taxon_preview: Kategorievorschau
+    new_content_block: Neuer Inhaltsblock
+    add_content_image: Weiteres Bild
+    content_image_teasertext: "Text"
+    edit_content_block: Inhaltsblock bearbeiten
+    delete_content_block: Inhaltsblock löschen
+    no_content_block_found: kein Inhaltsblock vorhanden
+    back_to_page: Zurück zur Seite
+    back_to_content_block: Zurück zum Inhaltsblock
+    visible: Sichtbar

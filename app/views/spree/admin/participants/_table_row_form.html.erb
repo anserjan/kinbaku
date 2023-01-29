@@ -1,0 +1,43 @@
+<% user = Spree::User.find_by(email: participant.email) %>
+<tr>
+  <% if user.present? && user.spree_roles.present? %>
+    <td>
+      <%= link_to participant.email, edit_admin_user_path(user) %>
+      <%= link_to_with_icon('email', t('spree.actions.send_email'), "mailto:#{participant.email}", no_text: true) %>
+    </td>
+    <td><%= user.spree_roles.map(&:name).to_sentence.capitalize %></td>
+  <% elsif user.present? && !user.spree_roles.present? %>
+    <td>
+      <%= link_to participant.email, edit_admin_user_path(user) %>
+      <%= link_to_with_icon('email', t('spree.actions.send_email'), "mailto:#{participant.email}", no_text: true) %>
+    </td>
+    <td><%= I18n.t("spree.user") %></td>
+  <% else %>
+    <td>
+      <%= participant.email %>
+      <%= link_to_with_icon('email', t('spree.actions.send_email'), "mailto:#{participant.email}", no_text: true) %>
+    </td>
+    <td><%= I18n.t("spree.guest") %></td>
+  <% end %>
+
+  <td><%= participant.payment %></td>
+  <td><%= Spree::Money.new(participant.amount_paid(@product)) %></td>
+  <td class="align-right actions">
+    <% if participant.payment.present? %>
+      <% case participant.payment
+      when "Bar" %>
+        <% if participant.payment_status %>
+          <%= link_to I18n.t("spree.yes"), admin_product_participant_path(@product, participant), class: "align-right", method: :put %>
+        <% else %>
+          <%= link_to I18n.t("spree.no"), admin_product_participant_path(@product, participant), class: "align-right", method: :put %>
+        <% end %>
+      <% else %>
+        <% if participant.order.paid? %>
+          <%= I18n.t("spree.yes") %>
+        <% else %>
+          <%= I18n.t("spree.no") %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

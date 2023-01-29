@@ -1,0 +1,52 @@
+<% content_for :page_title do %>
+  <%= I18n.t("spree.content_blocks") %> <%= I18n.t("spree.for_page") %> '<%= @page.title %>'
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= link_to I18n.t("spree.new_content_block"), new_admin_page_content_block_url(@page), class: "btn btn-primary" %></li>
+  <li><%= link_to I18n.t("spree.back_to_page"), spree.edit_admin_page_path(@page.id), class: "btn btn-primary" %></li>
+<% end %>
+
+<% if @content_blocks.present? %>
+  <table class="table index sortable" data-sortable-link="<%= update_positions_admin_page_content_blocks_url(@page) -%>">
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= I18n.t("spree.content_type") %></th>
+        <th><%= I18n.t("spree.block_name") %></th>
+        <th><%= I18n.t("spree.visible") %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @content_blocks.each do |cb| %>
+        <tr id="<%= spree_dom_id(cb) %>">
+          <td class="move-handle text-left">
+            <span class="icon icon-move handle ui-sortable-handle"></span>
+          </td>
+          <td><%= I18n.t("spree.content_types.#{cb.content_type}") %></td>
+          <td><%= cb.block_name %></td>
+          <td><%= content_tag(:i, '', :class => 'fa fa-capture green') if cb.visible %></td>
+          <td class="actions">
+            <%= link_to "", edit_admin_page_content_block_url(@page, cb),
+                        class: "fa fa-edit icon_link with-tip no-text",
+                        data: { action: "edit", "original-title": I18n.t(:edit) } %>
+            <%= link_to "", clone_admin_page_content_block_url(@page, cb),
+                        class: "fa fa-copy icon_link with-tip no-text",
+                        data: { action: "clone", "original-title": I18n.t(:clone) } %>
+            <%= link_to "", admin_page_content_block_url(@page, cb),
+                        class: "delete-resource fa fa-trash icon_link with-tip no-text",
+                        title: I18n.t("spree.delete"),
+                        data: { confirm: I18n.t(:are_you_sure), action: I18n.t(:remove) } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found',
+                  resource: Spree::ContentBlock,
+                  new_resource_url: new_admin_page_content_block_url %>
+  </div>
+<% end %>

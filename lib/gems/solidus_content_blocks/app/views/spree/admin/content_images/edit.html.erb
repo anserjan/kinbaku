@@ -1,0 +1,28 @@
+<% content_for :page_title do %>
+  <%= I18n.t("spree.content_block") %> <%= I18n.t("spree.for_page") %> '<%= @page.title %>': <%= I18n.t("spree.edit_content_block") %> <%= I18n.t(:edit) %> <%= I18n.t(:images) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= link_to I18n.t("spree.back_to_content_block"), edit_admin_page_content_block_url(@page, @content_block), class: "btn btn-primary" %></li>
+  <li><%= link_to I18n.t("spree.content_blocks"), admin_page_content_blocks_url(@page), class: "btn btn-primary" %></li>
+<% end %>
+
+
+<%= form_for([:admin, @page.id, @content_block, @content_image],
+    url:  admin_page_content_block_image_url(@page, @content_block, @content_image),
+    html: { multipart: true }) do |form| %>
+
+  <p>
+    <%= I18n.t("thumbnail") %>:<br/>
+    <%= link_to(image_tag(@content_image.attachment.url(:mini)), @content_image.attachment.url(:original)) %>
+  </p>
+
+  <fieldset class="no-border-top">
+    <%= render "form", f: form %>
+    <div class="form-buttons filter-actions actions">
+      <%= button_tag t('spree.actions.update'), class: 'btn btn-primary' %>
+      <%= link_to t('spree.actions.cancel'), spree.edit_admin_page_content_block_path(@page, @content_block), class: 'button' %>
+    </div>
+  </fieldset>
+
+<% end %>

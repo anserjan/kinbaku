@@ -1,0 +1,88 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   "true": "foo"
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  activerecord:
+      models:
+        spree/product:
+          one: "Course"
+          other: "Courses"
+  spree:
+    datetime_picker:
+      format: "%Y-%m-%d %H:%M"
+    participant: "Participant"
+    participants: "Participants"
+    no_participant_found: "No participant found"
+    mark_as_paid: "Mark as paid"
+    mark_as_payment_due: "Mark as payment due"
+    trainer: "Trainer"
+    new_products: "New Courses"
+    "yes": "Yes"
+    "no": "No"
+    guest: "Guest"
+    hints:
+      spree/product:
+        name: "Store will generate the name out of date and taxons if field is empty"
+        first_event: "Starting with this date, the events will be created according to the choosen repeat pattern"
+    address: "Address"
+    repeat_amount: "Repeat amount"
+    repeat_pattern: "Repeat pattern"
+    already_buyed_warning: "You already purchased this course at %{date}"
+    get_cash_list: "Get Cash List"
+    total_cash: "Total Cash"
+    total_deposits: "Total Deposits"
+    remaining_cash: "Remaining Cash"
+    deposit: "Deposit"
+    deposits: "Deposits"
+    course: "Course"
+    invalid_deposit: "Invalid Deposit"
+    add_product: "Add Course"
+    new_product: "New Course"
+    no_products_found: "No Course found"
+    product_details: "Course Details"
+    stock_management: "Course Stock"
+    notice_messages:
+      product_cloned: "Course has beend cloned"
+      product_deletes: "Course has been deleted"
+      product_not_cloned: "Course could not be cloned"
+      product_not_deleted: "Course could not be deleted"
+    admin:
+      tab:
+        cash_list: "Cash List"
+        products: "Courses"
+  number:
+    currency:
+      format:
+        delimiter: ","
+        separator: "."
+        negative: "-"
+  amount_warning: "Wrong number format"

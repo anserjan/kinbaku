@@ -1,0 +1,43 @@
+en:
+  blog: "Blog"
+  menus:
+    index:
+      listing_menus: "Menu entry list"
+      static_path: "static path"
+    new_menu: "New menu entry"
+    edit_menu: "Edit menu entry"
+    list_of_menus: "List of menus"
+    link_text: "Link text"
+    url: "URL"
+    explain_url: "URL explaination"
+    visible: "Visible"
+    explain_visible: "Visible explaination"
+    parent_id: "Parentelement"
+    explain_parent_id: "Parentelement explaination"
+    select_parent: "Select parentelement"
+    menu_bar_id: "Menubar id"
+    select_menu_bar_id: "Choose Menubar id"
+    explain_menu_bar_id: "Menüleiste id Erklärung"
+    page_id: "Page id"
+    select_page_id: "Page Id auswählen"
+    explain_page_id: "Page Id Erklärung"
+    sequence: "sequenz"
+    back: "Zurück zur Liste der Menüeinträge"
+    css_class: "Spezielle CSS Klassen"
+  spree:
+    admin:
+      tab:
+        menu_bars: "Menubars"
+    menu_bars: "Menubars"
+    menus: "Menu entry"
+    hints:
+      spree/menu:
+        css_class: "Spezielle Css Klassen für diesen Menüeintrag"
+  menu_bars:
+    list_of_menu_bars: "Liste von Menüleisten"
+    editing_menu_bar: "Menüleiste bearbeiten"
+    new_menu_bar: "Neue Menüleiste"
+    name: "Name"
+    back: "Zurück zur Liste von Menüleisten"
+    description: "Beschreibung"
+    css_class: "CSS Klassen"
