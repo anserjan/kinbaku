@@ -123,8 +123,18 @@
           <%= f.error_message_on :shipping_category %>
         <% end %>
       </div>
-    </div>
 
+      <div class="field">
+        <%= label_tag I18n.t("spree.repeat_pattern"), nil, class: "required" %>
+        <%= select_tag "repeat_pattern", options_for_select([["Single", "single"], ["Weekly" ,"weekly"], ["Monthly", "monthly"]]), class: "custom-select", required: :true %>
+      </div>
+
+      <div class="field">
+        <%= label_tag I18n.t("spree.repeat_amount"), nil, class: "required" %>
+        <%= number_field_tag :repeat_amount, 1, in: 1..52, step: 1, requiered: true, class: 'fullwidth' %>
+      </div>
+
+    </div>
   </div>
 
   <div class="row">

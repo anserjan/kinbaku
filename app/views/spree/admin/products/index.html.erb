@@ -4,9 +4,6 @@
   <li>
     <%= link_to t('spree.new_product'), new_object_url, class: 'btn btn-primary' %>
   </li>
-  <li>
-    <%= link_to I18n.t('spree.new_products'), new_bulk_admin_products_path, class: 'btn btn-primary' %>
-  </li>
 <% end if can?(:create, Spree::Product) %>
 <% content_for :table_filter_title do %>
   <%= t('spree.search') %>

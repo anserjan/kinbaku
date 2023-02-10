@@ -46,6 +46,7 @@ en:
     mark_as_payment_due: "Mark as payment due"
     trainer: "Trainer"
     new_products: "New Courses"
+    number_of_tickets: "Number of tickets"
     "yes": "Yes"
     "no": "No"
     guest: "Guest"

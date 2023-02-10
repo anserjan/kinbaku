@@ -79,10 +79,6 @@ Spree::Core::Engine.routes.draw do
 
   namespace :admin do
     resources :products do
-      collection do
-        get :new_bulk
-        post :create_bulk
-      end
       resources :participants
     end
     resources :trainer_cash_lists

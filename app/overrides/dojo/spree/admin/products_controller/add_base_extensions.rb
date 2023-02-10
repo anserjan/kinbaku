@@ -2,13 +2,12 @@ module Dojo
   module Spree
     module Admin
       module ProductsController
-        module AddCreateBulk
+        module AddBaseExtensions
 
-          def create_bulk
-            ::Spree::Product.create_bulk(params)
-            return redirect_to admin_products_url
-          end
+          def self.prepended(base)
             
+          end
+
           ::Spree::Admin::ProductsController.prepend self
         end
       end
