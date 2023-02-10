@@ -2,8 +2,11 @@
 
   <div class="categories">
     <ul class="categories__list">
-      <% Spree::MenuBar.find_by(name: "Footer").menus.each do |menu| %>
-        <li><%= link_to menu.link_text, menu.url %></li>
+      <% menu_bar = Spree::MenuBar.find_by(name: "Footer") %>
+      <% if menu_bar.present? %>
+        <% menu_bar.menus.each do |menu| %>
+          <li><%= link_to menu.link_text, menu.url %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>

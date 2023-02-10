@@ -4,8 +4,11 @@
   </figure>
 
   <ul class="top-bar__menu-bar">
-    <% Spree::MenuBar.find_by(name: "Header").menus.each do |menu| %>
-      <li><%= link_to menu.link_text, menu.url %></li>
+    <% menu_bar = Spree::MenuBar.find_by(name: "Header") %>
+    <% if menu_bar.present? %>
+      <% menu_bar.menus.each do |menu| %>
+        <li><%= link_to menu.link_text, menu.url %></li>
+      <% end %>
     <% end %>
   </ul>
 
