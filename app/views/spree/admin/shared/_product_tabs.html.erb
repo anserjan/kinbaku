@@ -10,9 +10,6 @@
       <%= content_tag :li, class: ('active' if current == 'Images') do %>
         <%= link_to t('spree.images'), spree.admin_product_images_url(@product) %>
       <% end if can?(:admin, Spree::Image) && !@product.deleted? %>
-      <%= content_tag :li, class: ('active' if current == 'Prices') do %>
-        <%= link_to plural_resource_name(Spree::Price), spree.admin_product_prices_url(@product) %>
-      <% end if can?(:admin, Spree::Price) && !@product.deleted? %>
       <%= content_tag :li, class: ('active' if current == 'Stock Management') do %>
         <%= link_to t('spree.stock_management'), spree.admin_product_stock_url(@product) %>
       <% end if can?(:admin, Spree::StockItem) && !@product.deleted? %>
