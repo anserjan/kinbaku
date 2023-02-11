@@ -89,7 +89,7 @@
       <div data-hook="admin_product_form_sku">
         <%= f.field_container :sku do %>
           <%= f.label :sku, t('spree.master_sku') %>
-          <%= f.text_field :sku, size: 16 %>
+          <%= f.text_field :sku, size: 16, disabled: f.object.new_record?%>
         <% end %>
       </div>
 
