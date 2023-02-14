@@ -1,6 +1,7 @@
-<% admin_breadcrumb(t('spree.participants')) %>
 <%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Participant' } %>
 <%= render partial: 'spree/admin/participants/trainers_form' if can?(:update, Spree::Product) %>
+
+<% admin_breadcrumb(t('spree.participants')) %>
 
 <% if @participants.any? %>
   <table class="index participant_table">

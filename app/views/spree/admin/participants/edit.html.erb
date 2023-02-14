@@ -1,5 +1,7 @@
-<% admin_breadcrumb(t('spree.participants')) %>
 <%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Participant' } %>
+
+<% admin_breadcrumb(link_to(t('spree.participants'), admin_product_participants_path(@product))) %>
+<% admin_breadcrumb(@participant.email) %>
 
 <%= form_for [:admin, @product, @participant] do |f| %>
   <fieldset class="no-border-top">  
