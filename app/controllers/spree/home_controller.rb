@@ -6,9 +6,11 @@ module Spree
     respond_to :html
 
     def index
-      redirect_to products_url
-      # @searcher = build_searcher(params.merge(include_images: true))
-      # @products = @searcher.retrieve_products
+      if Spree::Page.find_by(slug: "/start").present?
+        redirect_to "/start"
+      else
+        redirect_to products_url
+      end
     end
   end
 end
