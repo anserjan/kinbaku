@@ -9,8 +9,12 @@ module Spree
       end
       
       def update
-        participant = Spree::Participant.all.find(params[:id])
-        participant.payment_status = !participant.payment_status
+        participant = Spree::Participant.find(params[:id])
+        if params[:participant].present?
+          participant.description = params[:participant][:description]
+        else
+          participant.payment_status = !participant.payment_status
+        end
         participant.save
         redirect_to admin_product_participants_path(params[:product_id])
       end

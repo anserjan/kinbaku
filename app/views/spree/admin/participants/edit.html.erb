@@ -1,0 +1,20 @@
+<% admin_breadcrumb(t('spree.participants')) %>
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Participant' } %>
+
+<%= form_for [:admin, @product, @participant] do |f| %>
+  <fieldset class="no-border-top">  
+    <legend align="center"><%= @participant.email %></legend>
+
+    <div class="field align-center">
+      <%= f.field_container :description do %>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+      <% end %>
+    </div>
+
+    <div class="filter-actions actions">
+      <%= button_tag t('spree.actions.update'), class: 'btn btn-primary' %>
+      <%= link_to t('spree.actions.cancel'), admin_product_participants_path(@product), class: 'btn btn-default' %>
+    </div>
+  </fieldset>
+<% end %>

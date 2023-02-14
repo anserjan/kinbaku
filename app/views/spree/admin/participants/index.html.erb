@@ -1,35 +1,35 @@
-<%= render partial: 'spree/admin/participants/trainers_form' if can?(:update, Spree::Product) %>
-<% if cannot?(:update, Spree::Product) %>
-  <fieldset>
-    <legend align="center" ><%= @product.trainer.name_and_email %></legend>
-  </fieldset>
-<% end %>
-<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Participant' } %>
-
 <% admin_breadcrumb(t('spree.participants')) %>
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Participant' } %>
+<%= render partial: 'spree/admin/participants/trainers_form' if can?(:update, Spree::Product) %>
 
 <% if @participants.any? %>
   <table class="index participant_table">
     <colgroup>
-      <col style="width:20%;">
       <col style="width:15%;">
       <col style="width:15%;">
-      <col style="width:15%;">
-      <col style="width:35%;">
+      <col style="width:10%;">
+      <col style="width:10%;">
+      <col style="width:10%;">
+      <col style="width:30%;">
+      <col style="width:5%;">
+      <col style="width:5%;">
     </colgroup>
     <thead>
       <tr>
-        <th><%= I18n.t('spree.email') %></th>
-        <th><%= I18n.t('spree.roles') %></th>
-        <th><%= I18n.t('spree.payment_method') %></th>
+        <th><%= I18n.t("spree.email") %></th>
+        <th><%= I18n.t("spree.order") %></th>
+        <th><%= I18n.t("spree.roles") %></th>
+        <th><%= I18n.t("spree.payment_method") %></th>
         <th><%= I18n.t("spree.price") %></th>
-        <th class='align-right'><%= Spree::Payment.human_attribute_name(:payment_state) %></th>
+        <th class="align-right"><%= I18n.t("spree.description") %></th>
+        <th></th>
+        <th class="align-right"><%= Spree::Payment.human_attribute_name(:payment_state) %></th>
       </tr>
     </thead>
     <tbody>
       <% @participants.each do |participant| %>
         <%= form_for [:admin, @product, participant] do |f| %>
-          <%= render partial: 'table_row_form', locals: { participant: participant } %>
+          <%= render partial: 'table_row_form', locals: { f: f, participant: participant } %>
         <% end %>
       <% end %>
     </tbody>
