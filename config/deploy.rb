@@ -2,7 +2,7 @@
 lock "~> 3.17.1"
 
 set :application, "kinbaku"
-set :repo_url, "https://anserjan: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@github.com/anserjan/kinbaku.git"
+set :repo_url, "https://@github.com/anserjan/kinbaku.git"
 
 set :rvm_ruby_version, "2.7.6"
 set :bundle_dir, ''
