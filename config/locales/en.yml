@@ -62,6 +62,7 @@ en:
     total_cash: "Total Cash"
     total_deposits: "Total Deposits"
     remaining_cash: "Remaining Cash"
+    bank_deposit: "Bank Deposit"
     deposit: "Deposit"
     deposits: "Deposits"
     course: "Course"

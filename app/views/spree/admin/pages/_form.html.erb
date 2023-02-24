@@ -11,7 +11,7 @@
     <div class='col-12'>
       <%= f.field_container :slug do %>
         <%= f.label :slug, class: 'required' %>
-        <%= f.text_field :slug, required: true, class: 'fullwidth title' %>
+        <%= f.text_field :slug, required: true, class: 'fullwidth title', disabled: f.object.new_record? %>
         <%= f.error_message_on :slug %>
       <% end %>
     </div>
@@ -21,19 +21,6 @@
         <%= f.label :body, class: 'required' %>
         <%= f.text_area :body, class: 'fullwidth', rows: 12 %>
         <%= f.error_message_on :body %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-2'>
-      <%= f.field_container :stores do %>
-        <%= f.label :stores, t("spree.stores") %>
-        <br>
-        <% Spree::Store.all.each do |store| %>
-          <%= check_box_tag 'page[store_ids][]', store.id, @page.stores.include?(store) %>
-          <%= label_tag store.name %>
-        <% end %>
       <% end %>
     </div>
   </div>
