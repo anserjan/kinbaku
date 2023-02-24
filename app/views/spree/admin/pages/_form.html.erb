@@ -19,7 +19,7 @@
     <div class='col-12'>
       <%= f.field_container :body do %>
         <%= f.label :body, class: 'required' %>
-        <%= f.text_area :body, class: 'fullwidth', rows: 12 %>
+        <%= f.cktext_area :body, class: 'fullwidth', rows: 12 %>
         <%= f.error_message_on :body %>
       <% end %>
     </div>
