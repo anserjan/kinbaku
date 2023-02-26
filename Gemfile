@@ -90,7 +90,7 @@ group :development, :test do
 end
 
 gem 'ckeditor', github: 'galetahub/ckeditor'
-gem "mini_magick"
+gem "ruby-vips"
 gem 'solidus_paypal_commerce_platform', github: 'solidusio/solidus_paypal_commerce_platform'
 gem 'solidus_menus', path: 'lib/gems/solidus_menus'
 gem 'solidus_static_content', github: 'solidusio-contrib/solidus_static_content'
