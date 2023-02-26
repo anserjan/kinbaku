@@ -1,8 +1,0 @@
-<%= f.field_container :taxon_id do %>
-  <%= f.label :taxon_id, I18n.t("spree.taxon") %><br />
-  <%= f.select :taxon_id,
-               Spree::Taxon.order(:parent_id).
-               map { |t| [t.pretty_name, t.id] }, {},
-               { class: "title fullwidth select2" } %>
-  <%= f.error_message_on :taxon_id %>
-<% end %>
