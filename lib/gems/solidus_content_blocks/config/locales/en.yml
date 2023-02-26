@@ -27,6 +27,8 @@ en:
     content_types:
       richtext: Text
       images: Pictures
+      richtext_image_right: "Richtext image right"
+      richtext_image_left: "Richtext image left"
       richtext_2: Text two columns
       richtext_3: Text three columns
       richtext_4: Text four columns

@@ -8,11 +8,6 @@ Spree::Core::Engine.routes.append do
         member do
           get :clone
         end
-        resources :images, :controller => "content_images" do
-          collection do
-            post :update_positions
-          end
-        end
       end
     end
   end

@@ -1,10 +1,14 @@
 class Spree::ContentBlock < ActiveRecord::Base
 
   belongs_to :page, class_name: "Spree::Page"
-  belongs_to :product, class_name: "Spree::Product", optional: true
-  belongs_to :taxon, class_name: "Spree::Taxon", optional: true
 
-  has_many :images, -> { order("position") }, class_name: "Spree::ContentImage", :as => :viewable, :dependent => :destroy
+  has_many_attached :images
+  # , variants: {
+  #   mini: { resize: "48x48" },
+  #   small: { resize: "400x400" },
+  #   product: { resize: "680x680" },
+  #   large: { resize: "1200x1200" }
+  # }
 
   validates_presence_of :content_type
 

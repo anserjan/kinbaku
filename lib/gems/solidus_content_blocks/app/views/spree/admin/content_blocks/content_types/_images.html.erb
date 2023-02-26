@@ -1,9 +1,13 @@
 <% if @content_block.images.present? %>
-  <div class="form-buttons filter-actions actions">
-    <%= link_to I18n.t("spree.add_content_image"), spree.new_admin_page_content_block_image_url(@page, @content_block), class: "btn btn-primary" %>
+  <div>
+    <%= f.field_container :images do %>
+      <%= f.label :images %>
+      <%= f.file_field :images, multiple: true %>
+      <%= f.error_message_on :images %>
+    <% end %>
   </div>
   <br>
-  <table class="table index sortable" data-sortable-link="<%= update_positions_admin_page_content_block_images_url(@page, @content_block) -%>">
+  <table class="table index sortable" data-sortable-link="<%= update_positions_admin_page_content_blocks_url(@page, @content_block) -%>">
     <thead>
       <tr>
         <th></th>
@@ -18,17 +22,10 @@
           <td class="move-handle text-left">
             <span class="icon icon-move handle ui-sortable-handle"></span>
           </td>
-          <td>
-            <%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:original), target: "_blank") %>
-          </td>
-          <td>
-            <%= image.alt %>
-          </td>
+          <td><%= image_tag image.variant(resize_to_limit: [48,48]).processed.url %></td>
+          <td><%#= image.alt %></td>
           <td class="actions">
-            <%= link_to "", edit_admin_page_content_block_image_url(@page, @content_block, image),
-                        class: "fa fa-edit icon_link with-tip no-text",
-                        data: { action: "edit", "original-title": I18n.t(:edit) } %>
-            <%= link_to "", admin_page_content_block_image_url(@page, @content_block, image),
+            <%= link_to "", admin_page_content_block_url(@page, @content_block, image),
                         class: "delete-resource fa fa-trash icon_link with-tip no-text",
                         title: I18n.t("spree.delete"),
                         data: { confirm: I18n.t("spree.are_you_sure"), action: I18n.t("spree.remove") } %>
@@ -38,8 +35,11 @@
     </tbody>
   </table>
 <% else %>
-  <div class="alpha twelve columns no-objects-found">
-    <%= I18n.t("spree.no_resource_found") %>,
-    <%= link_to I18n.t("spree.add_one"), spree.new_admin_page_content_block_image_url(@page, @content_block) %>!
+  <div>
+    <%= f.field_container :images do %>
+      <%= f.label :images %>
+      <%= f.file_field :images, multiple: true %>
+      <%= f.error_message_on :images %>
+    <% end %>
   </div>
 <% end %>
