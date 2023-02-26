@@ -1,5 +1,5 @@
 <%= f.field_container :body_1 do %>
-  <%= f.label :body_1, I18n.t(:body_1) %><br />
-  <%= f.cktext_area :body_1, {rows: 8, :class => 'fullwidth'} %>
+  <%= f.label :body_1, I18n.t("spree.body_1") %><br />
+  <%= f.cktext_area :body_1, {rows: 8, class: 'fullwidth'} %>
   <%= f.error_message_on :body_1 %>
 <% end %>
