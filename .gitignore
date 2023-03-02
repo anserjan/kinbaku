@@ -1,0 +1,26 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+log
+log/*
+!/log/.keep
+/tmp
+
+#database config
+/config/database.yml
+
+#lock for gemfile
+#/Gemfile.lock
+
+public/sitemap*
+public/spree/*
+public/ckeditor_assets/*
+/public/assets/*
+
+#ignore storage
+storage
+storage/*
