@@ -24,3 +24,5 @@ public/ckeditor_assets/*
 #ignore storage
 storage
 storage/*
+
+Gemfile.lock
