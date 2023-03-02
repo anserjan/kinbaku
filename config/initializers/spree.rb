@@ -16,7 +16,6 @@ Spree.config do |config|
   Spree::Money.default_formatting_rules[:sign_before_symbol] = false
 
   # from address for transactional emails
-  config.mails_from = "store@example.com"
 
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
@@ -95,8 +94,8 @@ end
 Spree.user_class = "Spree::LegacyUser"
 
 Rails.application.config.to_prepare do
-  Spree::Product.whitelisted_ransackable_attributes |= ["date_and_time", "participants_count"]
-  Spree::Product.whitelisted_ransackable_associations |= ["trainer"]
+  Spree::Product.allowed_ransackable_attributes |= ["date_and_time", "participants_count"]
+  Spree::Product.allowed_ransackable_associations |= ["trainer"]
 end
 
 # Rules for avoiding to store the current path into session for redirects

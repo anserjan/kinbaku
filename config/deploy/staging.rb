@@ -11,10 +11,10 @@ server "65.21.247.234", user: "kinbaku", roles: %w{app db web}
 
 set :ssh_options, {
   user: "kinbaku",
-  keys: ["~/.ssh/id_rsa"]
+  keys: ["~/.ssh/kinbaku_server"]
 }
 
-set :deploy_to, "/home/kinbaku/stage"
+set :deploy_to, "~/home/kinbaku/kinbaku"
 set :branch, "stage"
 set :rails_env, "development"
 
