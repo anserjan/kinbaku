@@ -8,10 +8,13 @@
       <% end %>
     </div>
   <% end %>
-  <div class="products">
-    <h1 class="products__taxon-title"><%= @page.title %></h1>
-    <section class="products__results-title" id="page_content">
+  <div class="pages">
+    <h1 class="page_title"><%= @page.title %></h1>
+    <section class="page_body">
       <%= raw @page.body %>
     </section>
   </div>
+  <% @page.content_blocks.each do |cb| %>
+    <%= render partial: cb.content_type, locals: { cb: cb } %>
+  <% end %>
 <% end %>

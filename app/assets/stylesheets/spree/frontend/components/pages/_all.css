@@ -1,0 +1,12 @@
+.pages {
+  display: flex;
+  flex-direction: column;
+  align-content: start;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.richtext {
+  margin: 0 auto;
+  max-width: 1200px;
+}
