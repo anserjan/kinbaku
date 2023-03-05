@@ -45,7 +45,7 @@
   </table>
 <% else %>
   <div class="alpha twelve columns no-objects-found">
-    <%= I18n.t("spree.no_resource_found") %>,
+    <%= I18n.t("spree.no_resource_found", resource: "Content Block") %>,
     <%= link_to I18n.t("spree.add_one"), spree.new_admin_page_content_block_url(@page) %>!
   </div>
 <% end %>
