@@ -16,6 +16,13 @@
       <% end %>
     </div>
 
+    <div class="col-12">
+      <%= f.field_container :menu_bar_id do %>
+        <%= f.label :menu_bar_id %>
+        <%= f.select :menu_bar_id, Spree::MenuBar.all.map { |mb| [mb.name, mb.id]}, { include_blank: t('spree.match_choices.none') }, { class: 'custom-select' } %>
+      <% end %>
+    </div>
+
     <div class='col-12'>
       <%= f.field_container :body do %>
         <%= f.label :body, class: 'required' %>

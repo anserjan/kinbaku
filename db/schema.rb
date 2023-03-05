@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_26_123041) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_05_143400) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -447,6 +447,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_123041) do
     t.boolean "show_in_sidebar", default: false, null: false
     t.string "meta_title"
     t.boolean "render_layout_as_partial", default: false
+    t.integer "menu_bar_id"
     t.index ["slug"], name: "index_spree_pages_on_slug"
   end
 
