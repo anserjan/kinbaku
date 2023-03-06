@@ -3,10 +3,12 @@
   flex-direction: column;
   align-content: start;
   margin: 2rem auto;
-  max-width: 1200px;
+  max-width: 114rem;
+  padding: 0 3rem;
 }
 
 .richtext {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 114rem;
+  padding: 0 3rem;
 }
