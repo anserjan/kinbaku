@@ -11,19 +11,13 @@
     <thead>
       <tr>
         <th></th>
-        <th></th>
-        <th></th>
         <th class="actions"></th>
       </tr>
     </thead>
     <tbody>
       <% @content_block.images.each do |image| %>
         <tr id="<%= spree_dom_id(image) %>">
-          <td class="move-handle text-left">
-            <span class="icon icon-move handle ui-sortable-handle"></span>
-          </td>
           <td><%= image_tag image.variant(resize_to_limit: [48,48]).processed.url %></td>
-          <td><%#= image.alt %></td>
           <td class="actions">
             <%= link_to "", admin_page_content_block_url(@page, @content_block, image),
                         class: "delete-resource fa fa-trash icon_link with-tip no-text",
