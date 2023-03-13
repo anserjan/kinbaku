@@ -7,6 +7,19 @@
   padding: 0 3rem;
 }
 
+.second_menu_bar {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 3rem auto 0 auto;
+  max-width: 114rem;
+  padding: 0 20rem;
+}
+
+.second_menu_bar li {
+  margin: 0 1rem;
+}
+
 .richtext {
   margin: 0 auto;
   max-width: 114rem;
