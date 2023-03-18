@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_05_143400) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_17_120900) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -216,6 +216,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_143400) do
     t.index ["page_id"], name: "index_spree_content_blocks_on_page_id"
     t.index ["product_id"], name: "index_spree_content_blocks_on_product_id"
     t.index ["taxon_id"], name: "index_spree_content_blocks_on_taxon_id"
+  end
+
+  create_table "spree_content_images", force: :cascade do |t|
+    t.integer "position", default: 0, null: false
+    t.string "alt"
+    t.integer "content_block_id"
   end
 
   create_table "spree_countries", force: :cascade do |t|

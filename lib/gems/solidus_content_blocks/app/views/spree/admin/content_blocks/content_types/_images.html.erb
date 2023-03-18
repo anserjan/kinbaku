@@ -1,25 +1,21 @@
-<% if @content_block.images.present? %>
-  <div>
-    <%= f.field_container :images do %>
-      <%= f.label :images %>
-      <%= f.file_field :images, multiple: true %>
-      <%= f.error_message_on :images %>
-    <% end %>
-  </div>
+<% if @content_block.content_images.present? %>
+  <%= link_to I18n.t("spree.add_content_image"), new_admin_page_content_block_content_image_url(@page, @content_block), class: "btn btn-primary" %>
   <br>
-  <table class="table index sortable" data-sortable-link="<%= update_positions_admin_page_content_blocks_url(@page, @content_block) -%>">
+  <table class="table index sortable" data-sortable-link="<%= update_position_admin_page_content_block_content_images_url(@page, @content_block) -%>">
     <thead>
       <tr>
+        <th></th>
         <th></th>
         <th class="actions"></th>
       </tr>
     </thead>
     <tbody>
-      <% @content_block.images.each do |image| %>
-        <tr id="<%= spree_dom_id(image) %>">
-          <td><%= image_tag image.variant(resize_to_limit: [48,48]).processed.url %></td>
+      <% @content_block.content_images.each do |content_image| %>
+        <tr id="<%= spree_dom_id(content_image) %>">
+          <td><%= image_tag content_image.image.variant(:mini).processed.url %></td>
+          <td><%= content_image.alt %></td>
           <td class="actions">
-            <%= link_to "", admin_page_content_block_url(@page, @content_block, image),
+            <%= link_to "", admin_page_content_block_content_image_url(@page, @content_block, content_image),
                         class: "delete-resource fa fa-trash icon_link with-tip no-text",
                         title: I18n.t("spree.delete"),
                         data: { confirm: I18n.t("spree.are_you_sure"), action: I18n.t("spree.remove") } %>
@@ -29,11 +25,5 @@
     </tbody>
   </table>
 <% else %>
-  <div>
-    <%= f.field_container :images do %>
-      <%= f.label :images %>
-      <%= f.file_field :images, multiple: true %>
-      <%= f.error_message_on :images %>
-    <% end %>
-  </div>
+  <%= link_to I18n.t("spree.add_content_image"), new_admin_page_content_block_content_image_url(@page, @content_block), class: "btn btn-primary" %>
 <% end %>

@@ -24,10 +24,6 @@ class Spree::Admin::ContentBlocksController < Spree::Admin::ResourceController
     redirect_to admin_page_content_blocks_url(@page)
   end
 
-  def update
-    
-  end
-
   private
 
   def location_after_save

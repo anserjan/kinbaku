@@ -1,0 +1,17 @@
+<% content_for :page_title do %>
+  <%= I18n.t("spree.content_image") %> <%= I18n.t("spree.for_content_block") %> '<%= @content_block.block_name %>': <%= I18n.t("spree.new_content_image") %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= link_to I18n.t("spree.back_to_content_block"), edit_admin_page_content_block_url(@content_block.page, @content_block), class: "btn btn-primary" %></li>
+<% end %>
+
+<%= form_with model: [:admin, @content_block.page, @content_block, @content_image], url: admin_page_content_block_content_images_url(@content_block.page.id, @content_block.id, @content_image) do |f| %>
+  <fieldset class="no-border-top">
+    <%= render "form", f: f %>
+    <div class="form-buttons filter-actions actions">
+      <%= button_tag t("spree.actions.create"), class: "btn btn-primary" %>
+      <%= link_to t("spree.actions.cancel"), edit_admin_page_content_block_path(@content_block.page, @content_block), class: "button" %>
+    </div>
+  </fieldset>
+<% end %>

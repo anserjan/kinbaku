@@ -46,3 +46,6 @@ en:
     back_to_page: Back to Page
     back_to_content_block: Back to Content Block
     visible: Visible
+    content_image: "Content Image"
+    for_content_block: "For Content Block"
+    new_content_image: "New Content Image"

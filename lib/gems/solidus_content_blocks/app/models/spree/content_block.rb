@@ -2,13 +2,7 @@ class Spree::ContentBlock < ActiveRecord::Base
 
   belongs_to :page, class_name: "Spree::Page"
 
-  has_many_attached :images
-  # , variants: {
-  #   mini: { resize: "48x48" },
-  #   small: { resize: "400x400" },
-  #   product: { resize: "680x680" },
-  #   large: { resize: "1200x1200" }
-  # }
+  has_many :content_images, class_name: "Spree::ContentImage"
 
   validates_presence_of :content_type
 
