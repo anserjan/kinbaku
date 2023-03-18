@@ -25,3 +25,19 @@
   max-width: 114rem;
   padding: 0 3rem;
 }
+
+.content_images {
+  align-content: center;
+  gap: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 2rem auto;
+  max-width: 114rem;
+  padding: 0 3rem;
+}
+
+.content_images img {
+  border-radius: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  max-width: 100%;
+}
