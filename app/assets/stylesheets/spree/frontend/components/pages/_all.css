@@ -27,10 +27,11 @@
 }
 
 .content_images {
-  align-content: center;
-  gap: 1rem;
+  row-gap: 4rem;
+  column-gap: 2rem;
   display: flex;
   flex-flow: row wrap;
+  justify-content: start;
   margin: 2rem auto;
   max-width: 114rem;
   padding: 0 3rem;
