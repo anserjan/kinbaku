@@ -5,7 +5,7 @@ module Dojo
 
 
         def self.prepended(base)
-          base.has_one :menu_bar
+          base.belongs_to :menu_bar
         end
 
         ::Spree::Page.prepend self
