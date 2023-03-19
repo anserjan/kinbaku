@@ -24,6 +24,6 @@
     </section>
   </div>
   <% @page.content_blocks.each do |cb| %>
-    <%= render partial: cb.content_type, locals: { cb: cb } %>
+    <%= render partial: cb.content_type, locals: { cb: cb } if cb.visible %>
   <% end %>
 <% end %>
