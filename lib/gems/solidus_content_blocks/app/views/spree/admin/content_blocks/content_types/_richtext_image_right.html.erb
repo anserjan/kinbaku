@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-6">
+    <%= f.field_container :body_1 do %>
+      <%= f.label :body_1, I18n.t("spree.body_1") %><br />
+      <%= f.cktext_area :body_1, {rows: 8, class: 'fullwidth'} %>
+      <%= f.error_message_on :body_1 %>
+    <% end %>
+  </div>
+  <div class="col-6">
+    <% if @content_block.content_images.present? %>
+      <%= link_to I18n.t("spree.add_content_image"), new_admin_page_content_block_content_image_url(@page, @content_block), class: "btn btn-primary" %>
+      <br><br><br>
+      <table class="table index sortable" data-sortable-link="<%= update_positions_admin_page_content_block_content_images_url(@page, @content_block) -%>">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th class="actions"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @content_block.content_images.each do |content_image| %>
+            <tr id="<%= spree_dom_id(content_image) %>">
+              <td class="move-handle text-left">
+                <span class="icon icon-move handle ui-sortable-handle"></span>
+              </td>
+              <td><%= image_tag content_image.image.variant(:mini).processed.url %></td>
+              <td><%= content_image.alt %></td>
+              <td class="actions">
+                <%= link_to "", admin_page_content_block_content_image_url(@page, @content_block, content_image),
+                            class: "delete-resource fa fa-trash icon_link with-tip no-text",
+                            title: I18n.t("spree.delete"),
+                            data: { confirm: I18n.t("spree.are_you_sure"), action: I18n.t("spree.remove") } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <%= link_to I18n.t("spree.add_content_image"), new_admin_page_content_block_content_image_url(@page, @content_block), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
