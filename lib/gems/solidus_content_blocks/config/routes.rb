@@ -4,7 +4,7 @@ Spree::Core::Engine.routes.append do
       resources :content_blocks do
         resources :content_images do
           collection do 
-            post :update_position
+            post :update_positions
           end
         end
         collection do

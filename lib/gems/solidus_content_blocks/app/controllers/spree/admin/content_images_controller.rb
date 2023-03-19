@@ -20,9 +20,6 @@ class Spree::Admin::ContentImagesController < Spree::Admin::ResourceController
         Spree::ContentImage.find_by(id: id).update_attribute(:position, ((index.to_i+1)*10))
       end
     end
-    respond_to do |format|
-      format.js { render text: 'Ok' }
-    end
   end
   
   private 

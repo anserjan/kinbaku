@@ -8,4 +8,6 @@ class Spree::ContentImage < Spree::Base
     attachable.variant :large, resize_to_limit: [1200, 1200]
   end
 
+  default_scope { order(:position) }
+  
 end
