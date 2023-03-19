@@ -62,6 +62,18 @@
   max-width: 100%;
 }
 
+.content_embed {
+  display: flex;
+  justify-content: center;
+  margin: 4rem auto;
+  max-width: 114rem;
+  padding: 0 3rem;
+}
+
+.content_embed iframe {
+  max-width: 100%;
+}
+
 @media screen and (min-width: 768px) {
   .content_richtext_image_left, .content_richtext_image_right {
     flex-flow: row nowrap;
