@@ -2,18 +2,17 @@
   display: flex;
   flex-direction: column;
   align-content: start;
-  margin: 2rem auto;
-  max-width: 114rem;
-  padding: 0 3rem;
+  margin: 2rem;
+  max-width: 1000px;
 }
 
 .second_menu_bar {
   display: flex;
   justify-content: center;
   list-style-type: none;
-  margin: 3rem auto 0 auto;
-  max-width: 114rem;
-  padding: 0 20rem;
+  margin: 3rem;
+  max-width: 1000px;
+  padding: 0;
 }
 
 .second_menu_bar li {
@@ -22,19 +21,18 @@
 
 .richtext {
   margin: 0 auto;
-  max-width: 114rem;
-  padding: 0 3rem;
+  max-width: 1000px;
+  padding: 0 2rem;
 }
 
 .content_images {
-  row-gap: 4rem;
   column-gap: 2rem;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: start;
-  margin: 2rem auto;
-  max-width: 114rem;
-  padding: 0 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin: 2rem;
+  max-width: 1000px;
+  row-gap: 2rem;
 }
 
 .content_images img {
@@ -44,21 +42,18 @@
 }
 
 .content_richtext_image_left, .content_richtext_image_right {
+  column-gap: 2rem;
   display: flex;
   flex-flow: column;
   flex: 1 1 50%;
   justify-content: center;
-  margin: 2rem auto;
-  max-width: 114rem;
-  column-gap: 2rem;
-}
-
-.content_richtext_image_left .item, .content_richtext_image_right .item {
-  margin: 0 2rem;
+  margin: 2rem;
+  max-width: 1000px;
 }
 
 .content_richtext_image_left img, .content_richtext_image_right img {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 1rem;
   max-width: 100%;
 }
 
@@ -66,7 +61,7 @@
   display: flex;
   justify-content: center;
   margin: 4rem auto;
-  max-width: 114rem;
+  max-width: 1000px;
   padding: 0 3rem;
 }
 
@@ -75,11 +70,31 @@
 }
 
 @media screen and (min-width: 768px) {
+  .pages {
+    padding: 0;
+  }
+
+  .content_images {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .content_richtext_image_left, .content_richtext_image_right {
     flex-flow: row nowrap;
+    padding: 0;
   }
 
   .content_richtext_image_left .item, .content_richtext_image_right .item {
     width: 50%;
   }
+}
+
+@media screen and (min-width: 992px){
+  .content_images, .content_richtext_image_left, .content_richtext_image_right, .pages, .second_menu_bar {
+    margin: 2rem auto;
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  
 }
