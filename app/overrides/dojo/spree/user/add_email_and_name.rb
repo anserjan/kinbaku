@@ -1,7 +1,7 @@
 module Dojo
   module Spree
     module User
-      module AddCashListFunction
+      module AddEmailAndName
 
         def name_and_email
           "#{self.bill_address.name} (#{self.email})"
