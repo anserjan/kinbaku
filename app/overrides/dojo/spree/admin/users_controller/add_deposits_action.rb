@@ -7,7 +7,6 @@ module Dojo
           def deposits
             if request.post?
               deposit = @user.deposits.create(amount: params[:deposit][:amount], deposit_date: params[:deposit][:deposit_date], description: params[:deposit][:description])
-              puts deposit.valid?
               unless deposit.valid?
                 flash[:error] = I18n.t("spree.invalid_deposit")
               end

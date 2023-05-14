@@ -34,7 +34,6 @@ module Dojo
     end
 
     def validate_for_payment_status order
-      puts "validate_for_payment_status"
       order.adjustments.each do |adjustment|
         if adjustment.eligible && adjustment.label.downcase.include?("verein")
           return true
