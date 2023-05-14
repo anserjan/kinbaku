@@ -14,6 +14,7 @@ Spree.config do |config|
   config.default_country_iso = "DE"
   Spree::Money.default_formatting_rules[:format] = '%n %u'
   Spree::Money.default_formatting_rules[:sign_before_symbol] = false
+  Spree::PermittedAttributes.user_attributes << :spree_role_ids
 
   # from address for transactional emails
 
