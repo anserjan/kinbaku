@@ -1,0 +1,11 @@
+<% admin_breadcrumb(link_to(plural_resource_name(Spree::Menu), spree.admin_menus_url)) %>
+<% admin_breadcrumb(t("spree.new_menu")) %>
+
+<%= form_for [:admin, @menu] do |f| %>
+  <fieldset>
+    <legend align="center"><%= t('spree.new_menu') %></legend>
+    <%= render partial: "form", locals: { f: f } %>
+    <%= render partial: 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>
+

@@ -6,17 +6,24 @@
   max-width: 1000px;
 }
 
-.second_menu_bar {
+.child_menu {
   display: flex;
   justify-content: center;
   list-style-type: none;
-  margin: 3rem;
+  margin: 3rem auto;
   max-width: 1000px;
   padding: 0;
 }
 
-.second_menu_bar li {
+.child_menu li {
   margin: 0 1rem;
+}
+
+.child_child_menu {
+  display: flex;
+  flex-flow: column nowrap;
+  list-style-type: none;
+  padding: 0;
 }
 
 .richtext {

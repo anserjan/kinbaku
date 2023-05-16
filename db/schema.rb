@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_120900) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_16_210700) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -321,20 +321,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_120900) do
     t.index ["source_id", "source_type"], name: "index_spree_log_entries_on_source_id_and_source_type"
   end
 
-  create_table "spree_menu_bars", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-  end
-
   create_table "spree_menus", force: :cascade do |t|
-    t.integer "menu_bar_id"
-    t.integer "sequence"
     t.string "link_text"
     t.string "url"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "css_class", default: ""
+    t.integer "position"
+    t.integer "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_spree_menus_on_parent_id"
   end
 
   create_table "spree_option_type_prototypes", force: :cascade do |t|
@@ -453,7 +447,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_120900) do
     t.boolean "show_in_sidebar", default: false, null: false
     t.string "meta_title"
     t.boolean "render_layout_as_partial", default: false
-    t.integer "menu_bar_id"
+    t.integer "menu_id"
     t.index ["slug"], name: "index_spree_pages_on_slug"
   end
 
@@ -1343,6 +1337,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_120900) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "spree_menus", "spree_menus", column: "parent_id"
   add_foreign_key "spree_promotion_code_batches", "spree_promotions", column: "promotion_id"
   add_foreign_key "spree_promotion_codes", "spree_promotion_code_batches", column: "promotion_code_batch_id"
   add_foreign_key "spree_tax_rate_tax_categories", "spree_tax_categories", column: "tax_category_id"

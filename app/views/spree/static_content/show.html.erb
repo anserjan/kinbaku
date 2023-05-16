@@ -9,13 +9,21 @@
     </div>
   <% end %>
 
-  <ul class="second_menu_bar">
-    <% if @page.menu_bar.present? %>
-      <% @page.menu_bar.menus.each do |menu| %>
-        <li><%= link_to menu.link_text, menu.url %></li>
+
+  <% if @page.menu && @page.menu.children %>
+    <ul class="child_menu">
+      <% @page.menu.children.each do |child| %>
+        <li><%= link_to child.link_text, child.url%></li>
+        <% if child.children && child.is_allowed_to_display_child_menus?(@page) %>
+          <ul class="child_child_menu">
+            <% child.children.each do |child_child| %>
+              <li><%= link_to child_child.link_text, child_child.url %></li>
+            <% end %>
+          </ul>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  <% end %>
 
   <div class="pages">
     <h1 class="page_title"><%= @page.title %></h1>

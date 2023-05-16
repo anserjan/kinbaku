@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-6">
+    <%= f.field_container :link_text do %>
+      <%= f.label :link_text, class: "required" %>
+      <%= f.text_field :link_text, required: true, class: "fullwidth title" %>
+      <%= f.error_message_on :link_text %>
+    <% end %>
+  </div>
+  <div class="col-6">
+    <%= f.field_container :url do %>
+      <%= f.label :url %>
+      <%= f.text_field :url, class: "fullwidth title" %>
+      <%= f.error_message_on :url %>
+    <% end %>
+  </div>
+</div>

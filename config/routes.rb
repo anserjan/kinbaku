@@ -89,6 +89,11 @@ Spree::Core::Engine.routes.draw do
       end
       resources :deposits, only: [:destroy]
     end
+    resources :menus do
+      collection do
+        post :update_positions
+      end
+    end
   end
 
 end

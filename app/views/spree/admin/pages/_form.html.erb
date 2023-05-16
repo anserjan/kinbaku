@@ -17,9 +17,9 @@
     </div>
 
     <div class="col-12">
-      <%= f.field_container :menu_bar_id do %>
-        <%= f.label :menu_bar_id %>
-        <%= f.select :menu_bar_id, Spree::MenuBar.all.map { |mb| [mb.name, mb.id]}, { include_blank: t('spree.match_choices.none') }, { class: 'custom-select' } %>
+      <%= f.field_container :menu_id do %>
+        <%= f.label :menu_id %>
+        <%= f.select :menu_id, Spree::Menu.only_parents.map { |menu| [menu.link_text, menu.id]}, { include_blank: t('spree.match_choices.none') }, { class: 'custom-select' } %>
       <% end %>
     </div>
 

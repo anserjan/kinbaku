@@ -1,0 +1,25 @@
+<% menus.each do |menu| %>
+  <tr id="<%= spree_dom_id menu %>">
+    <td>
+      <% if can?(:update_positions, Spree::Menu) %>
+        <span class="handle"></span>
+      <% end %>
+    </td>
+    <td><%= menu.link_text %></td>
+    <td><%= menu.url %></td>
+    <td class="actions">
+      <%= link_to_with_icon(
+        "bars",
+        I18n.t("spree.menus"),
+        admin_menu_path(menu),
+        no_text: true
+      ) %>
+      <% if can?(:update, menu) %>
+        <%= link_to_edit menu, no_text: true %>
+      <% end %>
+      <% if can?(:destroy, menu) %>
+        <%= link_to_delete menu, no_text: true %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

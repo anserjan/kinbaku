@@ -80,6 +80,13 @@ Spree::Backend::Config.configure do |config|
     label: "cash_list",
     url: "/admin/trainer_cash_lists"
   )
+  config.menu_items << config.class::MenuItem.new(
+    [:Menus],
+    "bars",
+    condition: -> { can?(:admin, Spree::Menu) },
+    label: "menu",
+    url: "/admin/menus"
+  )
 
   # Custom frontend product path
   #
