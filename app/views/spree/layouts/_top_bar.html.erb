@@ -5,9 +5,16 @@
 
   <ul class="top-bar__menu-bar">
     <% menu = Spree::Menu.find_by(link_text: "Header") %>
-    <% if menu.present? %>
+    <% if menu %>
       <% menu.children.each do |menu| %>
         <li><%= link_to menu.link_text, menu.url %></li>
+        <% if menu.children && @page && menu.is_allowed_to_display_child_menus?(@page) %>
+          <ul class="child_child_menu">
+            <% menu.children.each do |child_child| %>
+              <li><%= link_to child_child.link_text, child_child.url %></li>
+            <% end %>
+          </ul>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
