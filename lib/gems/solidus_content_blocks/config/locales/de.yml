@@ -26,6 +26,7 @@ de:
     block_name: Block Bezeichnung
     content_type: Inhalts-Typ
     content_types:
+      stage: Stage
       richtext: Text
       images: Bilder
       richtext_2: Text zweispaltig
@@ -33,6 +34,7 @@ de:
       richtext_4: Text vierspaltig
       richtext_6: Text sechspaltig
       richtext_images: Textspalte und Galeriespalte
+      three_card_teaser: Drei Karten Teaser
       embed: Eingebetteter Code (z.B. iframe)
       product_preview: Produktvorschau
       taxon_preview: Kategorievorschau

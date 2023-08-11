@@ -25,6 +25,7 @@ en:
     block_name: Block Name
     content_type: Content-Type
     content_types:
+      stage: Stage
       richtext: Text
       images: Pictures
       richtext_image_right: "Richtext image right"
@@ -34,6 +35,7 @@ en:
       richtext_4: Text four columns
       richtext_6: Text six columns
       richtext_images: Text Column and Gallery Column
+      three_card_teaser: Three Card Teaser
       embed: Embed Code Code (i.e. iframe)
       product_preview: Product Preview
       taxon_preview: Taxon Preview
