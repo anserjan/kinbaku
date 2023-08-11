@@ -6,8 +6,8 @@ module Spree
     respond_to :html
 
     def index
-      if Spree::Page.find_by(slug: "/start").present?
-        redirect_to "/start"
+      if Spree::Page.find_by(slug: "/verein").present?
+        redirect_to "/verein"
       else
         redirect_to products_url
       end
