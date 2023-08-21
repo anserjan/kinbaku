@@ -1,6 +1,6 @@
 <section class="content_<%= cb.content_type %>">
   <div class="item">
-    <%= image_tag cb.content_images.first.image.url, alt: cb.content_images.first.alt if cb.content_images.present? %>
+    <%= image_tag cb.content_images.first.image.variant(:product).processed.url, alt: cb.content_images.first.alt if cb.content_images.present? %>
   </div>
   <div class="item">
     <%= raw cb.body_1 %>

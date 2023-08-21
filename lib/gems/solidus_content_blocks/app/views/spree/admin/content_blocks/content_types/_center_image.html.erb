@@ -1,0 +1,27 @@
+<% if @content_block.content_images.present? %>
+  <%= link_to I18n.t("spree.add_content_image"), new_admin_page_content_block_content_image_url(@page, @content_block), class: "btn btn-primary" %>
+  <br><br><br>
+  <table class="table index sortable" data-sortable-link="<%= update_positions_admin_page_content_block_content_images_url(@page, @content_block) -%>">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= image_tag @content_block.content_images.first.image.variant(:product).processed.url %></td>
+        <td><%= @content_block.content_images.first.alt %></td>
+        <td class="actions">
+          <%= link_to "", admin_page_content_block_content_image_url(@page, @content_block, @content_block.content_images.first),
+                      class: "delete-resource fa fa-trash icon_link with-tip no-text",
+                      title: I18n.t("spree.delete"),
+                      data: { confirm: I18n.t("spree.are_you_sure"), action: I18n.t("spree.remove") } %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% else %>
+  <%= link_to I18n.t("spree.add_content_image"), new_admin_page_content_block_content_image_url(@page, @content_block), class: "btn btn-primary" %>
+<% end %>

@@ -86,7 +86,7 @@
   max-width: 1000px;
 }
 
-.content_richtext_image_left img, .content_richtext_image_right img {
+.content_richtext_image_left img, .content_richtext_image_right img, .content_three_card_teaser img {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 1rem;
   max-width: 100%;
@@ -104,7 +104,7 @@
   max-width: 100%;
 }
 
-.stage {
+.content_stage {
   margin-bottom: 2em;
 
   &__image {
@@ -123,7 +123,18 @@
 
 .content_three_card_teaser img {
   object-fit: cover;
-  max-width: 25%;
+}
+
+.content_center_image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 16px;
+}
+
+.content_center_image img {
+  aspect-ratio: 1/1;
+  max-width: 100%;
 }
 
 @media screen and (min-width: 768px) {
