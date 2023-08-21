@@ -119,6 +119,7 @@
   justify-content: center;
   margin-bottom: 2em;
   max-width: 100%;
+  row-gap: 2em;
 }
 
 .content_three_card_teaser img {
@@ -135,6 +136,25 @@
 .content_center_image img {
   aspect-ratio: 1/1;
   max-width: 100%;
+}
+
+.page_gallery_container {
+  display: flex;
+  flex: row nowrap;
+}
+
+.page_gallery {
+  display: flex;
+  flex-flow: column wrap;
+  flex-basis: 25%;
+  margin-left: 2em;
+  row-gap: 2em;
+}
+
+.page_gallery img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  max-width: 250px;
 }
 
 @media screen and (min-width: 768px) {
