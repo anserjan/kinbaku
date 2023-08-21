@@ -104,8 +104,26 @@
   max-width: 100%;
 }
 
-.stage__image{
-  width:100%;
+.stage {
+  margin-bottom: 2em;
+
+  &__image {
+    width: 100%;
+  }
+}
+
+.content_three_card_teaser {
+  column-gap: 2em;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+  margin-bottom: 2em;
+  max-width: 100%;
+}
+
+.content_three_card_teaser img {
+  object-fit: cover;
+  max-width: 25%;
 }
 
 @media screen and (min-width: 768px) {

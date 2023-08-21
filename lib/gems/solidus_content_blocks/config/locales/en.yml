@@ -39,6 +39,7 @@ en:
       embed: Embed Code Code (i.e. iframe)
       product_preview: Product Preview
       taxon_preview: Taxon Preview
+      center_image: Centered Image
     new_content_block: New Content Block
     add_content_image: Add Picture
     content_image_teasertext: "Text"

@@ -1,0 +1,5 @@
+<section class="content_<%= cb.content_type %>">
+  <% cb.content_images.each do |content_image|%>
+    <%= image_tag content_image.image.url, alt: content_image.alt %>
+  <% end %>
+</section>
