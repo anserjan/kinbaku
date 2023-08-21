@@ -5,3 +5,4 @@ but the file must be there for the dummy application that expects it.
 This approach is in order to don't have to make changes in the solidus_core
 dummy app generator in the process of developing this extension. */
 //= require jquery
+//= require spree/frontend/top_bar
