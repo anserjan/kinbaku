@@ -28,8 +28,8 @@ en:
       stage: Stage
       richtext: Text
       images: Pictures
-      richtext_image_right: "Richtext image right"
-      richtext_image_left: "Richtext image left"
+      richtext_image_right: Richtext image right
+      richtext_image_left: Richtext image left
       richtext_2: Text two columns
       richtext_3: Text three columns
       richtext_4: Text four columns
@@ -40,6 +40,7 @@ en:
       product_preview: Product Preview
       taxon_preview: Taxon Preview
       center_image: Centered Image
+      page_gallery_column: Page Gallery Column
     new_content_block: New Content Block
     add_content_image: Add Picture
     content_image_teasertext: "Text"
