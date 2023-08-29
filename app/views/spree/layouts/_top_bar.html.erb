@@ -1,34 +1,11 @@
 <div class="top-bar">
+
   <figure class="logo">
     <%= logo %>
   </figure>
 
-  <ul class="top-bar__menu-bar">
-    <% menu = Spree::Menu.find_by(link_text: "Header") %>
-    <% if menu %>
-      <% menu.children.each do |menu| %>
-        <% if menu.children.present? && @page %>
-          <li class="sub__menu__container">
-            <%= link_to menu.link_text, menu.url, class: "sub__menu__item"  %>
-            <%= solidus_icon("fa fa-angle-down sub__menu__toggle") %>
-            <ul class="sub__menu">
-              <% menu.children.each do |child_child| %>
-                <li><%= link_to child_child.link_text, child_child.url %></li>
-              <% end %>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to menu.link_text, menu.url, class: "top-bar__menu-bar__item" %></li>
-        <% end %>
-      <% end %>
-    <% end %>
-  </ul>
-
-  <% if spree_current_user %>
-    <%= link_to I18n.t('spree.my_account'), spree.account_path, class: 'auth-link' %>
-  <% else %>
-    <%= link_to I18n.t('spree.login'), spree.login_path, class: 'auth-link' %>
-  <% end %>
+  <%= render partial: "spree/layouts/mobile_header", locals: { menu: Spree::Menu.find_by(link_text: "Header") } %>
+  <%= render partial: "spree/layouts/desktop_header", locals: { menu: Spree::Menu.find_by(link_text: "Header") } %>
 
   <div class="cart-link" id="link-to-cart">
     <noscript>

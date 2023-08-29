@@ -1,0 +1,54 @@
+.desktop__header__menu {
+  column-gap: 2em;
+  display: none;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 1rem;
+  max-width: 1000px;
+  padding: 0;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+
+  .sub__menu {
+    background-color: white;
+    border: 1px solid black;
+    display: none;
+    flex-flow: column nowrap;
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    top: 60px;
+    width: max-content;
+  }
+
+  &__container {
+    display: none;
+    top: 15px;
+    position: relative;
+  }
+
+  &__item {
+    margin-right: 8px;
+  }
+
+  &__toggle {
+    cursor: pointer;
+    font-size: 32px;
+    position: absolute;
+    right: -34px;
+  }
+}
+
+.active {
+  font-weight: bold;
+}
+
+.active + .sub__menu {
+  display: flex;
+}
+
+.cart-link {
+  align-self: end;
+}

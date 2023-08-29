@@ -1,0 +1,20 @@
+.mobile__header {
+  display: block;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+
+  .burger__menu__toggle {
+    height: 2.5em;
+    left: -45px;
+    position: relative;
+    opacity: 0;
+    width: 2.5em;
+  }
+  
+  .burger__menu__toggle:checked ~ .mobile__header__menu {
+    display: block;
+  }  
+
+
+}
