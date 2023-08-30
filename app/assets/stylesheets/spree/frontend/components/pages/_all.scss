@@ -170,9 +170,11 @@
 .page_gallery_container {
   display: flex;
   flex-flow: column wrap;
+  max-width: 1200px;
   width: 100%;
   @media screen and (min-width: 768px) {
     flex-flow: row;
+    margin: 0 auto;
   }
 }
 

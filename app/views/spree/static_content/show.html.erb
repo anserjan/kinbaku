@@ -9,6 +9,9 @@
     </div>
   <% end %>
 
+  <% stage = @page.content_blocks.find_by(content_type: :stage) %>
+  <%= render partial: stage.content_type, locals: { cb: stage } if stage.present? && stage.visible %>
+
   <div class="pages">
     <section class="page_body">
       <%= raw @page.body %>
@@ -16,10 +19,11 @@
   </div>
 
   <% page_gallery_column = @page.content_blocks.find_by(content_type: :page_gallery_column) %>
-  <% if page_gallery_column.present? %>
+
+  <% if page_gallery_column.present? && page_gallery_column.visible %>
     <div class="page_gallery_container">
       <div class="">
-        <% @page.content_blocks.reject{ |cb| cb.content_type == "page_gallery_column"}.each do |cb| %>
+        <% @page.content_blocks.reject { |cb| cb.content_type == "page_gallery_column" || cb.content_type == "stage" }.each do |cb| %>
           <%= render partial: cb.content_type, locals: { cb: cb } if cb.visible %>
         <% end %>
       </div>
