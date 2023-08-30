@@ -131,12 +131,16 @@
   max-width: 100%;
 }
 
-.content_stage {
+.content__stage {
   margin-bottom: 2em;
 
   &__image {
+    aspect-ratio: 4 / 3;
     object-fit: cover;
     width: 100%;
+    @media screen and (min-width: 768px) {
+      aspect-ratio: 16 / 4;
+    }
   }
 }
 
@@ -191,10 +195,10 @@
   flex-flow: row wrap;
   flex-basis: 25%;
   justify-content: center;
-  margin-left: 2em;
+  margin: 0 1em;
   row-gap: 2em;
   @media screen and (min-width: 768px) {
-    flex-flow: column wrap;
+    
   }
 }
 
