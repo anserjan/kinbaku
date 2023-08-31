@@ -8,7 +8,9 @@
     <script>
       Solidus.fetch_cart('<%= j spree.cart_link_path %>')
     </script>
-    <%= render partial: "spree/layouts/mobile_header", locals: { menu: Spree::Menu.find_by(link_text: "Header") } %>
-    <%= render partial: "spree/layouts/desktop_header", locals: { menu: Spree::Menu.find_by(link_text: "Header") } %>
+    <% if Spree::Menu.find_by(link_text: "Header").present? %>
+      <%= render partial: "spree/layouts/mobile_header", locals: { menu: Spree::Menu.find_by(link_text: "Header") } %>
+      <%= render partial: "spree/layouts/desktop_header", locals: { menu: Spree::Menu.find_by(link_text: "Header") } %>
+    <% end %>
   </div>
 </header>
