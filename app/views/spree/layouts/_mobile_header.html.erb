@@ -1,27 +1,38 @@
 <div class="mobile__header">
+  <figure class="logo">
+    <%= logo %>
+  </figure>
+  <div class="cart-link" id="link-to-cart">
+    <noscript>
+      <%= link_to t('spree.cart'), spree.cart_path %>
+    </noscript>
+  </div>
+
+  <script>
+    Solidus.fetch_cart('<%= j spree.cart_link_path %>')
+  </script>
   <div class="burger__menu__container">
     <svg viewBox="0 0 100 80" width="40" height="40">
       <rect width="100" height="20"></rect>
       <rect y="30" width="100" height="20"></rect>
       <rect y="60" width="100" height="20"></rect>
     </svg>
-    <input type="checkbox" class="burger__menu__toggle">
-    <ul class="mobile__header__menu">
-      <% menu.children.each do |menu| %>
-        <% if menu.children.present? && @page %>
-          <li class="sub__menu__container">
-            <%= link_to menu.link_text, menu.url, class: "sub__menu__item"  %>
-            <%= solidus_icon("fa fa-angle-down sub__menu__toggle") %>
-            <ul class="sub__menu">
-              <% menu.children.each do |child_child| %>
-                <li><%= link_to child_child.link_text, child_child.url %></li>
-              <% end %>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to menu.link_text, menu.url %></li>
-        <% end %>
-      <% end %>
-    </ul>
   </div>
 </div>
+<ul class="mobile__header__menu">
+    <% menu.children.each do |menu| %>
+      <% if menu.children.present? && @page %>
+        <li class="sub__menu__container">
+          <%= link_to menu.link_text, menu.url, class: "sub__menu__item"  %>
+          <%= solidus_icon("fa fa-angle-down sub__menu__toggle") %>
+          <ul class="sub__menu">
+            <% menu.children.each do |child_child| %>
+              <li><%= link_to child_child.link_text, child_child.url %></li>
+            <% end %>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to menu.link_text, menu.url %></li>
+      <% end %>
+    <% end %>
+  </ul>

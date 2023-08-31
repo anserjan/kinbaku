@@ -1,20 +1,35 @@
 .mobile__header {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  padding: 2em;
   @media screen and (min-width: 768px) {
     display: none;
   }
 
-  .burger__menu__toggle {
-    height: 2.5em;
-    left: -45px;
-    position: relative;
-    opacity: 0;
-    width: 2.5em;
+}
+
+.mobile__header__menu {
+  display: none;
+  list-style-type: none;
+  margin: 0;
+
+  .sub__menu {
+    display: none;
+    flex-flow: column nowrap;
+    list-style-type: none;
+    width: max-content;
+
+    &__toggle {
+      font-size: 24px;
+    }
   }
-  
-  .burger__menu__toggle:checked ~ .mobile__header__menu {
-    display: block;
-  }  
+}
+
+.mobile__header__menu.open {
+  display: block;
+}
 
 
+.active + .sub__menu {
+  display: flex;
 }
