@@ -151,6 +151,7 @@
 }
 
 .page_gallery {
+  align-content:start;
   column-gap: 2em;
   display: flex;
   flex-flow: row wrap;
@@ -166,6 +167,7 @@
 .page_gallery img {
   aspect-ratio: 1/1;
   object-fit: cover;
+  max-height: 300px;
   max-width: 250px;
 }
 
