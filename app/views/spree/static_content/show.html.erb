@@ -34,7 +34,7 @@
       </div>
     </div>
   <% else %>
-    <% @page.content_blocks.each do |cb| %>
+    <% @page.content_blocks.reject { |cb| cb.content_type == "stage" }.each do |cb| %>
       <%= render partial: cb.content_type, locals: { cb: cb } if cb.visible %>
     <% end %>
   <% end %>
