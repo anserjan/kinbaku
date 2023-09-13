@@ -1,7 +1,7 @@
 <div class="desktop__header">
   <ul class="desktop__header__menu">
     <% menu.children.each do |menu| %>
-      <% if menu.children.present? && @page %>
+      <% if menu.children.present? %>
         <li class="sub__menu__container">
           <%= link_to menu.link_text, menu.url, class: "sub__menu__item"  %>
           <%= solidus_icon("fa fa-angle-down sub__menu__toggle") %>
