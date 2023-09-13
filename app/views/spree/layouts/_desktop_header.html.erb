@@ -15,5 +15,12 @@
         <li><%= link_to menu.link_text, menu.url %></li>
       <% end %>
     <% end %>
+    <li>
+      <% if spree_current_user %>
+        <%= link_to I18n.t('spree.my_account'), account_path %>
+      <% else %>
+        <%= link_to I18n.t('spree.login'), login_path %>
+      <% end %>
+    </li>
   </ul>
 </div>
