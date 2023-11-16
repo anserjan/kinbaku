@@ -1,8 +1,8 @@
 <section class="content_<%= cb.content_type %>">
-  <div class="item">
+  <div class="img">
     <%= image_tag cb.content_images.first.image.variant(:product).processed.url, alt: cb.content_images.first.alt if cb.content_images.present? %>
   </div>
-  <div class="item">
+  <div class="text">
     <%= raw cb.body_1 %>
   </div>
 </section>

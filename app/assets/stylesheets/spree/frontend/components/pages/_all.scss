@@ -70,15 +70,22 @@
   }
 }
 
-.content_richtext_image_left .item, .content_richtext_image_right .item {
+.content_richtext_image_left .text, .content_richtext_image_right .text {
   @media screen and (min-width: 768px) {
-    width: 50%;
+    flex-basis: 66.66%; 
+  }
+}
+
+.content_richtext_image_left .img, .content_richtext_image_right .img {
+  @media screen and (min-width: 768px) {
+    flex-basis: 33.33%
   }
 }
 
 .content_richtext_image_left img, .content_richtext_image_right img, .content_three_squares img {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   max-width: 100%;
+  width: 100%;
 }
 
 .content_embed {
