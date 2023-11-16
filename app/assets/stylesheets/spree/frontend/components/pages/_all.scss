@@ -2,6 +2,13 @@
   --max-width: 800px;
 }
 
+.richttext a,
+.pages a,
+.content_richtext_image_left a,
+.content_richtext_image_right a {
+  text-decoration: underline;
+}
+
 .header__secondary-navigation {
   column-gap: 1em;
   display: flex;
