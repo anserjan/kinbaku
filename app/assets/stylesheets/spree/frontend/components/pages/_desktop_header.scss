@@ -1,3 +1,11 @@
+:root {
+  --max-width: 800px;
+}
+
+.header__secondary-navigation {
+  max-width: var(--max-width);
+}
+
 .desktop__header {
   display: flex;
   flex-flow: row nowrap;
