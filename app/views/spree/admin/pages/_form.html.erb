@@ -1,32 +1,25 @@
-<div data-hook='admin_page_form_fields'>
-  <div class='row'>
-    <div class='col-12'>
+<div data-hook="admin_page_form_fields">
+  <div class="row">
+    <div class="col-12">
       <%= f.field_container :title do %>
-        <%= f.label :title, class: 'required' %>
-        <%= f.text_field :title, required: true, class: 'fullwidth title' %>
+        <%= f.label :title, class: "required" %>
+        <%= f.text_field :title, required: true, class: "fullwidth title" %>
         <%= f.error_message_on :title %>
       <% end %>
     </div>
 
-    <div class='col-12'>
+    <div class="col-12">
       <%= f.field_container :slug do %>
-        <%= f.label :slug, class: 'required' %>
-        <%= f.text_field :slug, required: true, class: 'fullwidth title', disabled: f.object.new_record? %>
+        <%= f.label :slug, class: "required" %>
+        <%= f.text_field :slug, required: true, class: "fullwidth title", disabled: f.object.new_record? %>
         <%= f.error_message_on :slug %>
       <% end %>
     </div>
 
     <div class="col-12">
-      <%= f.field_container :menu_id do %>
-        <%= f.label :menu_id %>
-        <%= f.select :menu_id, Spree::Menu.only_parents.map { |menu| [menu.link_text, menu.id]}, { include_blank: t('spree.match_choices.none') }, { class: 'custom-select' } %>
-      <% end %>
-    </div>
-
-    <div class='col-12'>
       <%= f.field_container :body do %>
         <%= f.label :body %>
-        <%= f.cktext_area :body, class: 'fullwidth', rows: 12 %>
+        <%= f.cktext_area :body, class: "fullwidth", rows: 12 %>
         <%= f.error_message_on :body %>
       <% end %>
     </div>

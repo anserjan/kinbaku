@@ -11,7 +11,6 @@ module Dojo
               body: params[:page][:body],
               store_ids: ::Spree::Store.first.id
             )
-            @new_page.menu_id = params[:page][:menu_id].to_i if params[:page][:menu_id].present?
             @new_page.save!
             redirect_to admin_pages_path
           end
@@ -20,8 +19,7 @@ module Dojo
             @page.update(
               title: params[:page][:title],
               slug: params[:page][:slug],
-              body: params[:page][:body],
-              menu_id: params[:page][:menu_id].to_i
+              body: params[:page][:body]
             )
             redirect_to admin_pages_path
           end

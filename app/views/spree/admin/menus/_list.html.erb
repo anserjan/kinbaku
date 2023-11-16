@@ -6,6 +6,7 @@
       <% end %>
     </td>
     <td><%= menu.link_text %></td>
+    <td><%= menu.page.title if menu.page.present? %></td>
     <td><%= menu.url %></td>
     <td class="actions">
       <%= link_to_with_icon(

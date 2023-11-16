@@ -15,12 +15,28 @@ module Spree
           link_text: params[:menu][:link_text],
           url: params[:menu][:url]
         )
+        
         if params[:menu][:parent_id]
           @menu.parent_id = params[:menu][:parent_id]
           @menu.save
           return redirect_to admin_menu_url(params[:menu][:parent_id])
         end
+        
         return redirect_to admin_menus_url
+      end
+
+      def update
+        menu = Spree::Menu.find(params[:id])
+        menu.link_text = params[:menu][:link_text]
+        menu.url = params[:menu][:url]
+
+        if params[:menu][:page].present?
+          menu.page = Spree::Page.find(params[:menu][:page].to_i)
+        else
+          menu.page = nil
+        end
+        menu.save
+        return redirect_to admin_menu_url menu.parent_id
       end
 
     end

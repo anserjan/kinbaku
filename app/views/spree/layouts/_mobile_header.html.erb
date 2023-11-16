@@ -11,16 +11,16 @@
     <% menu.children.each do |menu| %>
       <% if menu.children.present? %>
         <li class="sub__menu__container">
-          <%= link_to menu.link_text, menu.url, class: "sub__menu__item"  %>
+          <%= link_to menu.link_text, menu.link, class: "sub__menu__item"  %>
           <%= solidus_icon("fa fa-angle-down sub__menu__toggle") %>
           <ul class="sub__menu">
             <% menu.children.each do |child_child| %>
-              <li><%= link_to child_child.link_text, child_child.url %></li>
+              <li><%= link_to child_child.link_text, child_child.link %></li>
             <% end %>
           </ul>
         </li>
       <% else %>
-        <li><%= link_to menu.link_text, menu.url %></li>
+        <li><%= link_to menu.link_text, menu.link %></li>
       <% end %>
     <% end %>
     <li>

@@ -11,13 +11,15 @@
     <colgroup>
       <col style="width: 10%">
       <col style="width: 20%">
-      <col style="width: 20%">
-      <col style="width: 50%">
+      <col style="width: 15%">
+      <col style="width: 15%">
+      <col style="width: 40%">
     </colgroup>
     <thead>
       <tr>
         <th></th>
         <th><%= Spree::Taxonomy.human_attribute_name(:name) %></th>
+        <th><%= I18n.t("spree.page") %></th>
         <th><%= I18n.t("spree.url") %></th>
         <th class="actions"></th>
       </tr>
