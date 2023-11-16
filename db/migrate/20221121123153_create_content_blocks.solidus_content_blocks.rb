@@ -9,7 +9,7 @@ class CreateContentBlocks < ActiveRecord::Migration[4.2]
       t.string :block_name
       t.text :body_1
       t.text :body_2
-      t.boolean :visible, default: false
+      t.boolean :visible, default: true
       t.integer :position, default: 0
 
       t.timestamps null: false
