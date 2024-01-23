@@ -7,7 +7,7 @@ module Dojo
           def create
             @new_page = ::Spree::Page.create(
               title: params[:page][:title],
-              slug: "/" + params[:page][:title].downcase.split(" ").join("-"),
+              slug: "/" + params[:page][:title].downcase.split(" ").join("-").parameterize,
               body: params[:page][:body],
               store_ids: ::Spree::Store.first.id
             )
@@ -18,7 +18,7 @@ module Dojo
           def update
             @page.update(
               title: params[:page][:title],
-              slug: params[:page][:slug],
+              slug: params[:page][:slug].parameterize,
               body: params[:page][:body]
             )
             redirect_to admin_pages_path

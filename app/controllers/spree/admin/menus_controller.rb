@@ -15,7 +15,7 @@ module Spree
           link_text: params[:menu][:link_text],
           url: params[:menu][:url]
         )
-        
+        @menu.url.parameterize
         if params[:menu][:parent_id]
           @menu.parent_id = params[:menu][:parent_id]
           @menu.save
@@ -28,7 +28,8 @@ module Spree
       def update
         menu = Spree::Menu.find(params[:id])
         menu.link_text = params[:menu][:link_text]
-        menu.url = params[:menu][:url]
+        url = params[:menu][:url]
+        menu.url = url.parameterize
 
         if params[:menu][:page].present?
           menu.page = Spree::Page.find(params[:menu][:page].to_i)
@@ -36,7 +37,11 @@ module Spree
           menu.page = nil
         end
         menu.save
-        return redirect_to admin_menu_url menu.parent_id
+
+        if params[:menu][:parent_id]
+          return redirect_to admin_menu_url menu.parent_id
+        end
+        return redirect_to admin_menus_url
       end
 
     end
