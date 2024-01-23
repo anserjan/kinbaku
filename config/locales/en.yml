@@ -31,6 +31,7 @@
 
 en:
   hello: "Hello world"
+  are_you_sure: "Are you sure"
   activerecord:
       models:
         spree/product:
