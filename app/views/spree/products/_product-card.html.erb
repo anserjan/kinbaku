@@ -21,14 +21,16 @@
         <% if product.gallery.images.first.present? %>
           <%= link_to render(ImageComponent.new(image: product.gallery.images.first, size: :small, itemprop: "image")), url, itemprop: 'url' %>
         <% else %>
-          <%= link_to image_tag("placeholder_products.jpg"), url, itemprop: 'url' %>
+          <%= link_to image_tag("placeholder_products.jpeg"), url, itemprop: 'url' %>
         <% end %>
       </section>
       <header class="product-card_header">
         <h2>
           <%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %>
         </h2>
-        <%= raw(product.description.slice(0,300)) %>
+        <%= product.date_and_time.to_datetime.strftime(" %d.%m. %H:%M") %>
+        <br>
+        <%= product.taxons.map { |taxon| taxon.name }.join(", ") %>
       </header>
       <section class="product-card_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <% if price = product.price_for_options(current_pricing_options)&.money %>
