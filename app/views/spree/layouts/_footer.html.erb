@@ -5,7 +5,7 @@
       <% menu = Spree::Menu.find_by(link_text: "Footer") %>
       <% if menu.present? %>
         <% menu.children.each do |menu| %>
-          <li><%= link_to menu.link_text, menu.url %></li>
+          <li><%= link_to menu.link_text, menu.link %></li>
         <% end %>
       <% end %>
     </ul>
