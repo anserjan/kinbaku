@@ -28,9 +28,7 @@
         <h2>
           <%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %>
         </h2>
-        <%= product.date_and_time.to_datetime.strftime(" %d.%m. %H:%M") %><br>
-        <%= raw(product.description.slice(0,100)) %>
-        <%= product.taxons.map { |taxon| taxon.name }.join(", ") %>
+        
       </header>
       <section class="product-card_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <% if price = product.price_for_options(current_pricing_options)&.money %>
