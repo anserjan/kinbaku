@@ -8,11 +8,16 @@
   </div>
   <div class="col-6">
     <%= f.field_container :page do %>
-      <%= f.label :page %>
-      <%= f.select :page, Spree::Page.all.map{ |page| [page.title, page.id]}, { include_blank: t('spree.match_choices.none') }, { class: 'custom-select' } %>
-      <%= f.error_message_on :page %>
+      <%= f.label :page_id %>
+      <%= f.select :page_id,
+        Spree::Page.all.map { |page| [page.title, page.id]},
+        { include_blank: t('spree.match_choices.none') },
+        { class: 'custom-select' }
+      %>
+      <%= f.error_message_on :page_id %>
     <% end %>
   </div>
+  
   <div class="col-6">
     <%= f.field_container :url do %>
       <%= f.label :url %>
