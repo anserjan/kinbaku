@@ -23,6 +23,8 @@ class Spree::Menu < ActiveRecord::Base
       return self.page.slug
     elsif self.url.present?
       return self.url
+    elsif self.content_block
+      return "#" + self.content_block.block_name
     else
       return ""
     end

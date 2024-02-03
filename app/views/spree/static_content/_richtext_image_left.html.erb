@@ -1,4 +1,4 @@
-<section class="content_<%= cb.content_type %>">
+<section id="<%= cb.block_name %>" class="content_<%= cb.content_type %>">
   <div class="img">
     <%= image_tag cb.content_images.first.image.variant(:product).processed.url, alt: cb.content_images.first.alt if cb.content_images.present? %>
   </div>

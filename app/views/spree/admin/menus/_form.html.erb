@@ -6,7 +6,7 @@
       <%= f.error_message_on :link_text %>
     <% end %>
   </div>
-  <div class="col-6">
+  <div class="col-4">
     <%= f.field_container :page do %>
       <%= f.label :page_id %>
       <%= f.select :page_id,
@@ -17,8 +17,20 @@
       <%= f.error_message_on :page_id %>
     <% end %>
   </div>
+
+  <div class="col-4">
+    <%= f.field_container :content_block do %>
+      <%= f.label :content_block_id %>
+      <%= f.select :content_block_id,
+        Spree::ContentBlock.all.map { |cb| [cb.block_name, cb.id]},
+        { include_blank: t('spree.match_choices.none') },
+        { class: 'custom-select' }
+      %>
+      <%= f.error_message_on :content_block_id %>
+    <% end %>
+  </div>
   
-  <div class="col-6">
+  <div class="col-4">
     <%= f.field_container :url do %>
       <%= f.label :url %>
       <%= f.text_field :url, class: "fullwidth title" %>
