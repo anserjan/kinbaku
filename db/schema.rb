@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_03_121600) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_03_142700) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -206,7 +206,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_121600) do
     t.integer "position", default: 0
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "taxon_id"
     t.index ["page_id"], name: "index_spree_content_blocks_on_page_id"
+    t.index ["taxon_id"], name: "index_spree_content_blocks_on_taxon_id"
   end
 
   create_table "spree_content_images", force: :cascade do |t|

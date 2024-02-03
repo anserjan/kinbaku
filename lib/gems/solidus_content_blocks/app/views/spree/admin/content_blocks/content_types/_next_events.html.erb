@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-12">
+    <%= f.field_container :taxon_id do %>
+      <%= f.label :taxon_id %>
+      <%=
+        f.select :taxon_id,
+        Spree::Taxon.all.map { |taxon| [taxon.name, taxon.id] },
+        { include_blank: t('spree.match_choices.none') },
+        { class: 'custom-select' }
+      %>
+      <%= f.error_message_on :taxon_id %>
+    <% end %>
+  </div>
+</div>

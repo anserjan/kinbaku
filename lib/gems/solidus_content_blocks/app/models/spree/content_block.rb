@@ -3,6 +3,7 @@ class Spree::ContentBlock < ActiveRecord::Base
   belongs_to :page, class_name: "Spree::Page"
 
   has_many :content_images, class_name: "Spree::ContentImage"
+  belongs_to :taxon, class_name: "Spree::Taxon"
 
   validates_presence_of :content_type
 
