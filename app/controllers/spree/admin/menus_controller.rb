@@ -2,6 +2,8 @@ module Spree
   module Admin
     class MenusController < Spree::Admin::ResourceController
       
+      after_action :parameterize, only: [:create, :update]
+
       def update_positions
         if params[:positions]
           params[:positions].each do |id, index|
@@ -10,38 +12,11 @@ module Spree
         end
       end
 
-      def create
-        @menu = Spree::Menu.create(
-          link_text: params[:menu][:link_text],
-          url: params[:menu][:url]
-        )
-        @menu.url.parameterize
-        if params[:menu][:parent_id]
-          @menu.parent_id = params[:menu][:parent_id]
-          @menu.save
-          return redirect_to admin_menu_url(params[:menu][:parent_id])
-        end
-        
-        return redirect_to admin_menus_url
-      end
+      private
 
-      def update
-        menu = Spree::Menu.find(params[:id])
-        menu.link_text = params[:menu][:link_text]
-        url = params[:menu][:url]
-        menu.url = url.parameterize
-
-        if params[:menu][:page].present?
-          menu.page = Spree::Page.find(params[:menu][:page].to_i)
-        else
-          menu.page = nil
-        end
-        menu.save
-
-        if params[:menu][:parent_id]
-          return redirect_to admin_menu_url menu.parent_id
-        end
-        return redirect_to admin_menus_url
+      def parameterize
+        @menu.url = @menu.url.parameterize.prepend("/") if @menu.url.present?
+        @menu.save
       end
 
     end

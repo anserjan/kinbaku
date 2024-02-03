@@ -2,6 +2,10 @@
   --max-width: 800px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .richtext a,
 .pages a,
 .content_richtext_image_left a,
@@ -72,6 +76,7 @@
   max-width: var(--max-width);
   @media screen and (min-width: 768px) {
     flex-flow: row nowrap;
+    margin: 0 auto;
     padding: 0;
   }
 }

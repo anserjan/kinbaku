@@ -3,6 +3,7 @@ class Spree::Page < ActiveRecord::Base
   default_scope -> { order("position ASC") }
 
   has_and_belongs_to_many :stores, join_table: 'spree_pages_stores'
+  has_many :menus, class_name: "Spree::Menu"
 
   validates_presence_of :title
   validates_presence_of [:slug], :if => :not_using_foreign_link?

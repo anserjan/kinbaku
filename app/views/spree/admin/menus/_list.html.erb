@@ -1,26 +1,58 @@
-<% menus.each do |menu| %>
-  <tr id="<%= spree_dom_id menu %>">
-    <td>
-      <% if can?(:update_positions, Spree::Menu) %>
-        <span class="handle"></span>
+<% if menus.any? %>
+  <table class="index sortable" id='listing_menus' data-hook data-sortable-link="<%= update_positions_admin_menus_url %>">
+    <colgroup>
+      <col style="width: 10%">
+      <col style="width: 15%">
+      <col style="width: 15%">
+      <col style="width: 15%">
+      <col style="width: 15%">
+      <col style="width: 30%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= Spree::Taxonomy.human_attribute_name(:name) %></th>
+        <th><%= I18n.t("spree.page") %></th>
+        <th><%= I18n.t("spree.content_block") %></th>
+        <th><%= I18n.t("spree.url") %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% menus.each do |menu| %>
+        <tr id="<%= spree_dom_id menu %>">
+          <td>
+            <% if can?(:update_positions, Spree::Menu) %>
+              <span class="handle"></span>
+            <% end %>
+          </td>
+          <td><%= menu.link_text %></td>
+          <td><%= menu.page.title if menu.page.present? %></td>
+          <td><%= menu.content_block.block_name if menu.content_block.present? %></td>
+          <td><%= menu.url %></td>
+          <td class="actions">
+            <%= link_to_with_icon(
+              "bars",
+              I18n.t("spree.menus"),
+              admin_menu_path(menu),
+              no_text: true
+            ) %>
+            <% if can?(:update, menu) %>
+              <%= link_to_edit menu, no_text: true %>
+            <% end %>
+            <% if can?(:destroy, menu) %>
+              <%= link_to_delete menu, no_text: true %>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
-    </td>
-    <td><%= menu.link_text %></td>
-    <td><%= menu.page.title if menu.page.present? %></td>
-    <td><%= menu.url %></td>
-    <td class="actions">
-      <%= link_to_with_icon(
-        "bars",
-        I18n.t("spree.menus"),
-        admin_menu_path(menu),
-        no_text: true
-      ) %>
-      <% if can?(:update, menu) %>
-        <%= link_to_edit menu, no_text: true %>
-      <% end %>
-      <% if can?(:destroy, menu) %>
-        <%= link_to_delete menu, no_text: true %>
-      <% end %>
-    </td>
-  </tr>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found',
+                resource: Spree::Menu,
+                new_resource_url: new_object_url %>
+  </div>
 <% end %>

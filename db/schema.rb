@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_16_210700) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_03_121600) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -319,6 +319,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_210700) do
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "page_id"
+    t.integer "content_block_id"
+    t.index ["content_block_id"], name: "index_spree_menus_on_content_block_id"
+    t.index ["page_id"], name: "index_spree_menus_on_page_id"
     t.index ["parent_id"], name: "index_spree_menus_on_parent_id"
   end
 
@@ -438,7 +442,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_210700) do
     t.boolean "show_in_sidebar", default: false, null: false
     t.string "meta_title"
     t.boolean "render_layout_as_partial", default: false
-    t.integer "menu_id"
     t.index ["slug"], name: "index_spree_pages_on_slug"
   end
 

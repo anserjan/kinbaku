@@ -12,7 +12,7 @@
   <% stage = @page.content_blocks.find_by(content_type: :stage) %>
   <%= render partial: stage.content_type, locals: { cb: stage } if stage.present? && stage.visible %>
 
-  <div class="pages">
+  <div id="<%= @page.title %>" class="pages">
     <section class="page_body">
       <%= raw @page.body %>
     </section>
