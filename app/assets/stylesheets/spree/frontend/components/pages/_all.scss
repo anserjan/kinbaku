@@ -6,7 +6,7 @@ html {
   scroll-behavior: smooth;
 }
 
-.richtext a,
+.content_richtext a,
 .pages a,
 .content_richtext_image_left a,
 .content_richtext_image_right a {
@@ -43,7 +43,7 @@ html {
   flex-grow: 0;
 }
 
-.richtext {
+.content_richtext {
   margin: 2px 16px;
   max-width: var(--max-width);
 }
@@ -198,8 +198,8 @@ html {
   max-width: 250px;
 }
 
-.content_images, .content_richtext_image_left, .content_richtext_image_right, .pages, .second_menu_bar, .richtext {
-  @media screen and (min-width: 992px) {
+.content_images, .content_richtext_image_left, .content_richtext_image_right, .pages, .second_menu_bar, .content_richtext, .content_three_squares {
+  @media screen and (min-width: 768px) {
     margin: 16px auto;
     padding: 0;
   }
