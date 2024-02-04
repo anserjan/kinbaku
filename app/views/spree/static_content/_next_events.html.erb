@@ -1,7 +1,7 @@
 <section id="<%= cb.block_name %>" class="content_<%= cb.content_type %>">
   <h1><%= cb.block_name %></h1>
   <div class="flexbox">
-    <% cb.taxon.products.order(:date_and_time).first(3).each do |product| %>
+    <% cb.recent_events.first(3).each do |product| %>
       <% url = spree.product_path(product) %>
       <div class="card">
         <% if product.gallery.images.first.present? %>
