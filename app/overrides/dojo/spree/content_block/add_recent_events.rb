@@ -4,7 +4,7 @@ module Dojo
       module AddRecentEvents
 
         def recent_events
-          self.taxon.products.select{ |product| product.date_and_time > Time.now }.sort{ |p| p[:date_and_time] }
+          self.taxon.products.select{ |product| product.date_and_time > Time.now }.sort_by{ |product| product.date_and_time }
         end
 
         ::Spree::ContentBlock.prepend self
