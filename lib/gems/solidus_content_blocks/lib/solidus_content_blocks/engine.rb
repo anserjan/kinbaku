@@ -5,7 +5,14 @@ module SolidusContentBlocks
     config.autoload_paths += %W(#{config.root}/lib)
 
     config.content_block_types = [
-      "richtext", "richtext_image_left", "richtext_image_right", "embed", "stage", "three_squares", "center_image"
+      "richtext",
+      "richtext_image_left",
+      "richtext_image_right",
+      "embed",
+      "stage",
+      "three_squares",
+      "center_image",
+      "next_events"
     ]
 
     config.partition_enums = [

@@ -1,0 +1,28 @@
+<section id="<%= cb.block_name %>" class="content_<%= cb.content_type %>">
+  <h1><%= cb.block_name %></h1>
+  <div class="flexbox">
+    <% cb.recent_events.first(3).each do |product| %>
+      <% url = spree.product_path(product) %>
+      <div class="card">
+        <% if product.gallery.images.first.present? %>
+          <%= link_to image_tag(product.gallery.images.first.url), url %>
+        <% else %>
+          <%= link_to image_tag("placeholder_products.jpeg"), url %>
+        <% end %>
+        <header class="product-card_header">
+          <h2>
+            <%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %>
+          </h2>
+        </header>
+        <section class="product-card_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <% if price = product.price_for_options(current_pricing_options)&.money %>
+          <span class="price selling" itemprop="price" content="<%= price.to_d %>">
+            <%= price.to_html %>
+          </span>
+        <% end %>
+        <span itemprop="priceCurrency" content="<%= current_pricing_options.currency %>"></span>
+      </section>
+      </div>
+    <% end %>
+  </div>
+</section>
