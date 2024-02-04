@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_03_142700) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_03_121600) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -201,13 +201,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_142700) do
     t.string "content_type"
     t.string "block_name"
     t.text "body_1"
-    t.text "body_2"
     t.boolean "visible", default: true
     t.integer "position", default: 0
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.text "body_2"
+    t.string "enumeration_text"
+    t.integer "product_id"
     t.integer "taxon_id"
+    t.text "body_3"
+    t.text "body_4"
+    t.text "body_5"
+    t.text "body_6"
     t.index ["page_id"], name: "index_spree_content_blocks_on_page_id"
+    t.index ["product_id"], name: "index_spree_content_blocks_on_product_id"
     t.index ["taxon_id"], name: "index_spree_content_blocks_on_taxon_id"
   end
 
