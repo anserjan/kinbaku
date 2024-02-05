@@ -6,9 +6,9 @@ module Dojo
 
           def create
             if params[:repeat_pattern].eql? "single"
-              @product = ::Spree::Product.create( 
-                name: set_default_name(params),
-                sku: set_sku(params),
+              product = ::Spree::Product.create( 
+                name: set_default_name(params, params[:product][:date_and_time]),
+                sku: set_sku(params, params[:product][:date_and_time]),
                 description: params[:product][:description],
                 price: params[:product][:price],
                 date_and_time: params[:product][:date_and_time],
@@ -17,7 +17,9 @@ module Dojo
                 shipping_category_id: params[:product][:shipping_category_id], 
                 taxon_ids: params[:product][:taxon_ids]
               )
-              # set_stock_items(@product)
+              set_stock_items(product)
+              set_default_image(product)
+              product.save
             else
               create_bulk(params)
             end
@@ -26,11 +28,11 @@ module Dojo
 
           private
           
-          def set_default_name param
+          def set_default_name params, new_date
             if params[:product][:name].present?
-              return params[:product][:name] + params[:product][:date_and_time].to_datetime.strftime(" %d.%m.%Y %H:%M")
+              return params[:product][:name] + new_date.to_datetime.strftime(" %d.%m.%Y %H:%M")
             else
-              return "Shibaritraining" + params[:product][:date_and_time].to_datetime.strftime(" %d.%m.%Y %H:%M")
+              return "Shibaritraining" + new_date.to_datetime.strftime(" %d.%m.%Y %H:%M")
             end
           end
 
@@ -45,27 +47,34 @@ module Dojo
             return return_taxon_ids
           end
 
-          def set_sku params
+          def set_sku params, new_date
             params[:product][:taxon_ids].empty? ? taxon_ids = "" : taxon_ids = params[:product][:taxon_ids].split(",").join("-")
-            return "k-#{taxon_ids}-#{params[:product][:date_and_time].to_datetime.strftime("%Y%m%d%H%M")}"
+            return "k-#{taxon_ids}-#{new_date.to_datetime.strftime("%Y%m%d%H%M")}"
           end
           
           def set_stock_items product
             product.stock_items.first.adjust_count_on_hand Dojo::Application.config.default_count_on_hand
             product.stock_items.first.update_attribute(:backorderable, false)
-            product.save!
+            product.save
+          end
+
+          def set_default_image product
+            image = File.open(Rails.root.join("app", "assets", "images", "placeholder_products.jpeg"))
+            product.images.create(attachment: image)
+            product.save
           end
 
           def create_bulk params
-            count_date = params[:product][:date_and_time].to_datetime
+            count_date = params[:product][:date_and_time]
             for i in 1..params[:repeat_amount].to_i do
-              @product = ::Spree::Product.create(
-                name: set_default_name(params),
-                sku: set_sku(params),
+              product = ::Spree::Product.create(
+                name: set_default_name(params, count_date),
+                sku: set_sku(params, count_date),
                 description: params[:product][:description],
                 price: params[:product][:price],
                 date_and_time: count_date,
                 available_on: params[:product][:available_on],
+                promotionable: params[:product][:promotionable],
                 shipping_category_id: params[:product][:shipping_category_id],
                 taxon_ids: params[:product][:taxon_ids]
               )
@@ -74,8 +83,9 @@ module Dojo
               else
                 count_date = params[:product][:date_and_time].to_datetime + i.months
               end
-              # set_stock_items(@product)
-              @product.save
+              set_stock_items(product)
+              set_default_image(product)
+              product.save
             end
           end
 
