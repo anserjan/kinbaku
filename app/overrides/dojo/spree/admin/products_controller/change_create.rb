@@ -6,7 +6,7 @@ module Dojo
 
           def create
             if params[:repeat_pattern].eql? "single"
-              @product = ::Spree::Product.create( 
+              product = ::Spree::Product.create( 
                 name: set_default_name(params, params[:product][:date_and_time]),
                 sku: set_sku(params, params[:product][:date_and_time]),
                 description: params[:product][:description],
@@ -17,7 +17,9 @@ module Dojo
                 shipping_category_id: params[:product][:shipping_category_id], 
                 taxon_ids: params[:product][:taxon_ids]
               )
-              set_stock_items(@product)
+              set_stock_items(product)
+              set_default_image(product)
+              product.save
             else
               create_bulk(params)
             end
@@ -56,6 +58,12 @@ module Dojo
             product.save
           end
 
+          def set_default_image product
+            image = File.open(Rails.root.join("app", "assets", "images", "placeholder_products.jpeg"))
+            product.images.create(attachment: image)
+            product.save
+          end
+
           def create_bulk params
             count_date = params[:product][:date_and_time]
             for i in 1..params[:repeat_amount].to_i do
@@ -76,6 +84,7 @@ module Dojo
                 count_date = params[:product][:date_and_time].to_datetime + i.months
               end
               set_stock_items(product)
+              set_default_image(product)
               product.save
             end
           end
