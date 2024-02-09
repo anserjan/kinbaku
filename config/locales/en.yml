@@ -56,8 +56,9 @@ en:
     guest: "Guest"
     hints:
       spree/product:
-        name: "Store will generate the name out of date and taxons if field is empty"
+        name: "Store will generate the name out of your given name and the date"
         first_event: "Starting with this date, the events will be created according to the choosen repeat pattern"
+        date_and_time: "Set date and time for the course"
     address: "Address"
     repeat_amount: "Repeat amount"
     repeat_pattern: "Repeat pattern"
