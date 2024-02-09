@@ -28,7 +28,7 @@ de:
     content_types:
       stage: Stage
       richtext: Text
-      images: Bilder
+      album: Album
       richtext_2: Text zweispaltig
       richtext_3: Text dreispaltig
       richtext_4: Text vierspaltig
@@ -50,3 +50,4 @@ de:
     back_to_page: Zurück zur Seite
     back_to_content_block: Zurück zum Inhaltsblock
     visible: Sichtbar
+    headline: Überschrift

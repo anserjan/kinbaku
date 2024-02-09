@@ -12,7 +12,8 @@ module SolidusContentBlocks
       "stage",
       "three_squares",
       "center_image",
-      "next_events"
+      "next_events",
+      "album"
     ]
 
     config.partition_enums = [

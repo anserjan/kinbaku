@@ -27,7 +27,7 @@ en:
     content_types:
       stage: Stage
       richtext: Text
-      images: Pictures
+      album: Album
       richtext_image_right: Richtext image right
       richtext_image_left: Richtext image left
       richtext_2: Text two columns
@@ -54,3 +54,4 @@ en:
     content_image: "Content Image"
     for_content_block: "For Content Block"
     new_content_image: "New Content Image"
+    headline: Headline

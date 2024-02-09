@@ -1,0 +1,11 @@
+<section id="<%= cb.block_name %>" class="content_<%= cb.content_type %>">
+  <h1><%= cb.body_1 %></h1>
+  <hr>
+  <div class="container">
+    <% cb.content_images.each do |content_image| %>
+      <div class="item">
+        <%= image_tag content_image.image.variant(:product).processed.url, alt: content_image.alt %>
+      </div> 
+    <% end %>
+  </div>
+</section>
