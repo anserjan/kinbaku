@@ -1,6 +1,6 @@
 <div class="desktop__header">
   <ul class="desktop__header__menu">
-    <% menu.children.each do |menu| %>
+    <% header_menu.children.each do |menu| %>
       <% if menu.children.present? %>
         <li class="sub__menu__container">
           <%= link_to menu.link_text, menu.link, class: "sub__menu__item"  %>

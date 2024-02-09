@@ -19,14 +19,10 @@ class Spree::Menu < ActiveRecord::Base
   end
 
   def link
-    if self.page.present?
-      return self.page.slug
-    elsif self.url.present?
-      return self.url
-    elsif self.content_block
-      return "#" + self.content_block.block_name
-    else
-      return ""
-    end
+    link = ""
+    return self.url if self.url.present?
+    link << self.page.slug if self.page
+    link << "#" + self.content_block.block_name if self.content_block
+    return link
   end
 end
