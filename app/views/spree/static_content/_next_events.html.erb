@@ -1,5 +1,5 @@
 <section id="<%= cb.block_name %>" class="content_<%= cb.content_type %>">
-  <h1><%= cb.block_name %></h1>
+  <h1><%= cb.body_1 %></h1>
   <div class="flexbox">
     <% cb.recent_events.first(3).each do |product| %>
       <% url = spree.product_path(product) %>
