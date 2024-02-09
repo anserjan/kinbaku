@@ -1,9 +1,4 @@
 <div class="products">
-  <aside>
-    <% if "spree/products" == params[:controller] && @taxon %>
-      <%= render 'spree/shared/search/filters', taxon: @taxon %>
-    <% end %>
-  </aside>
   <section class="products_section">
     <% if params[:keywords] %>
       <% if @products.empty? %>
