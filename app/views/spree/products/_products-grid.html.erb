@@ -9,7 +9,7 @@
 %>
 
 <ul class="<%= class_names %>">
-  <% products.each do |product| %>
+  <% products.sort_by{ |product| product.date_and_time }.each do |product| %>
     <%= render 'spree/products/product-card', product: product %>
   <% end %>
 </ul>
