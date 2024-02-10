@@ -19,7 +19,7 @@ module Dojo
       end
     end
 
-    config.default_count_on_hand = 15
+    config.default_count_on_hand = 8
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
