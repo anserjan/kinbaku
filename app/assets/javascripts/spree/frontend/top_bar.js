@@ -13,10 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  //open burger menu
+  // open burger menu
   const burger_toggle = document.querySelector(".burger__menu__container");
   const burger_menu = document.querySelector(".mobile__header__menu");
   burger_toggle.addEventListener("click", () => {
     burger_menu.classList.toggle("open");
+  });
+
+  // close menu after using link
+  const elements = burger_menu.querySelectorAll("a");
+  elements.forEach(element => {
+    element.addEventListener("click", () => {
+      burger_menu.classList.toggle("open");
+    });
   });
 });
