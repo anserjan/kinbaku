@@ -22,13 +22,14 @@
   li {
     font-size: 18px;
     min-height: 34px;
+    margin-bottom: 4px;
   }
   
   .sub__menu {
     display: none;
     flex-flow: column nowrap;
     list-style-type: none;
-    width: max-content;
+    
 
     &__toggle {
       font-size: 24px;
