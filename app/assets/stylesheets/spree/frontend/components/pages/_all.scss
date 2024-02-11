@@ -46,7 +46,7 @@ html {
 .content_richtext_image_right img,
 .content_three_squares img,
 .content_next_events img {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
   max-width: 100%;
   width: 100%;
 }
@@ -123,19 +123,17 @@ html {
 
 .content_center_image {
   align-items: center;
-  border: 1px grey solid;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
   justify-content: center;
   margin: 16px;
   padding: 1em;
-  width: 400px;
-}
-
-.content_center_image img {
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  max-width: 100%;
+  img {
+    aspect-ratio: 1 / 1;
+    box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+    object-fit: cover;
+    max-width: 400px;
+    width: 100%;
+  }
 }
 
 .content_next_events {
@@ -179,7 +177,7 @@ html {
     img {
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
       max-width: 100%;
     }
   }
