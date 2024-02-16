@@ -1,3 +1,0 @@
-{$KINBAKU_DOMAIN:noop.local}, localhost {
-    reverse_proxy * kinbaku:3000
-}
