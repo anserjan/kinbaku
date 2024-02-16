@@ -1,0 +1,34 @@
+version: '3.7'
+
+networks:
+  internal:
+
+services:
+  kinbaku:
+    build: .
+    restart: unless-stopped
+    environment:
+      - RAILS_ENV=${KINBAKU_ENV}
+    volumes:
+      - ./db/development.sqlite3:/opt/app/db/development.sqlite3  # TODO fix for production
+    networks:
+      - internal
+
+  www:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      - KINBAKU_DOMAIN
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - internal
+
+volumes:
+  caddy_data:
+  caddy_config:
