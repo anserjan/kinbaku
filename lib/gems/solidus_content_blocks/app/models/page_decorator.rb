@@ -1,1 +1,4 @@
-Spree::Page.include PageContentBlocks
+class PageDecorator
+  Spree::Page.include PageContentBlocks
+
+end

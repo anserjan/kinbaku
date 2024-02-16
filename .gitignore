@@ -26,3 +26,4 @@ storage
 storage/*
 
 Gemfile.lock
+/config/master.key
