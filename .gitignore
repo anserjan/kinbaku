@@ -27,3 +27,4 @@ storage/*
 
 Gemfile.lock
 /config/master.key
+*.swp

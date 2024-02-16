@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+gem 'sqlite3', '~> 1.4.2'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -91,7 +91,7 @@ end
 
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem "ruby-vips"
-gem 'solidus_paypal_commerce_platform', github: 'solidusio/solidus_paypal_commerce_platform'
+gem 'solidus_paypal_commerce_platform', github: 'solidusio/solidus_paypal_commerce_platform', branch: 'v1.0.0'
 gem 'solidus_static_content', github: 'solidusio-contrib/solidus_static_content'
 gem 'solidus_content_blocks', path: 'lib/gems/solidus_content_blocks'
 gem 'jquery-rails'
