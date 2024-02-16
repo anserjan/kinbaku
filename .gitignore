@@ -26,3 +26,5 @@ storage
 storage/*
 
 Gemfile.lock
+*.swp
+
