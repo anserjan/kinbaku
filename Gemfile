@@ -77,7 +77,7 @@ gem "solidus_api", "~> 3.4.0"
 gem "canonical-rails"
 gem "solidus_support"
 gem "truncate_html"
-gem "view_component", "~> 2.46"
+gem "view_component", "~> 2.83"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
