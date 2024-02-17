@@ -71,10 +71,10 @@ end
 
 gem "solidus_auth_devise"
 
-gem "solidus_core", "~> 3.2"
-gem "solidus_backend", "~> 3.2"
-gem "solidus_api", "~> 3.2"
-gem "solidus_sample", "~> 3.2"
+gem "solidus_core", "~> 3.4.0"
+gem "solidus_backend", "~> 3.4.0"
+gem "solidus_api", "~> 3.4.0"
+gem "solidus_sample", "~> 3.4.0"
 gem "canonical-rails"
 gem "solidus_support"
 gem "truncate_html"
