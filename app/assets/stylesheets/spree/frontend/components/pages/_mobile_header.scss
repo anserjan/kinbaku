@@ -3,6 +3,11 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  @media screen and (max-width: 800px) {
+    ul {
+      padding-left: 16px;
+    }
+  }
 }
 
 .mobile__header {
@@ -36,7 +41,7 @@
     display: none;
     flex-flow: column nowrap;
     list-style-type: none;
-    
+    padding-top: 8px;
 
     &__toggle {
       font-size: 24px;
