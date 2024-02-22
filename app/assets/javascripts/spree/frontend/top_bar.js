@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
       sub_menu_toggles.forEach(to_close_sub_menu_toggle => {
         if(to_close_sub_menu_toggle == sub_menu_toggle) { return; }
         to_close_sub_menu_toggle.classList.remove("active");
-      })
+      });
       sub_menu_toggle.classList.toggle("active");
-    })
+    });
   });
 
 
@@ -20,11 +20,17 @@ document.addEventListener("DOMContentLoaded", function () {
     burger_menu.classList.toggle("open");
   });
 
-  // close menu after using link
-  const elements = burger_menu.querySelectorAll("a");
+  // reset menu after using link
+  const elements = document.querySelectorAll(".mobile__header__menu,.desktop__header__menu");
+  // elements document.querySelectorAll("a");
   elements.forEach(element => {
-    element.addEventListener("click", () => {
-      burger_menu.classList.toggle("open");
+    element.querySelectorAll("a").forEach(anchor => {
+      anchor.addEventListener("click", () => {
+        burger_menu.classList.remove("open");
+        sub_menu_toggles.forEach(sub_menu_toggle => {
+          sub_menu_toggle.classList.remove("active");
+        });
+      });
     });
   });
 });
