@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.6"
+ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
@@ -10,10 +10,10 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4.2'
+gem 'sqlite3', '~> 1.7.2'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.4.2"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
@@ -71,14 +71,13 @@ end
 
 gem "solidus_auth_devise"
 
-gem "solidus_core", "~> 3.2"
-gem "solidus_backend", "~> 3.2"
-gem "solidus_api", "~> 3.2"
-gem "solidus_sample", "~> 3.2"
+gem "solidus_core", "~> 3.4.0"
+gem "solidus_backend", "~> 3.4.0"
+gem "solidus_api", "~> 3.4.0"
 gem "canonical-rails"
 gem "solidus_support"
 gem "truncate_html"
-gem "view_component", "~> 2.46"
+gem "view_component", "~> 3.10.0"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -91,7 +90,7 @@ end
 
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem "ruby-vips"
-gem 'solidus_paypal_commerce_platform', github: 'solidusio/solidus_paypal_commerce_platform', branch: 'v1.0.0'
+gem 'solidus_paypal_commerce_platform', github: 'solidusio/solidus_paypal_commerce_platform', branch: 'v1.0.3'
 gem 'solidus_static_content', github: 'solidusio-contrib/solidus_static_content'
 gem 'solidus_content_blocks', path: 'lib/gems/solidus_content_blocks'
 gem 'jquery-rails'

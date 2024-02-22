@@ -1,4 +1,4 @@
-FROM ruby:2.7.6
+FROM ruby:3.3.0
 
 # prepare work directory
 RUN mkdir -p /opt/app
