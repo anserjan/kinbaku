@@ -13,6 +13,9 @@ log/*
 #database config
 /config/database.yml
 
+#all db dumps
+*.sql
+
 #lock for gemfile
 #/Gemfile.lock
 

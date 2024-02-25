@@ -94,3 +94,5 @@ gem 'solidus_paypal_commerce_platform', github: 'solidusio/solidus_paypal_commer
 gem 'solidus_static_content', github: 'solidusio-contrib/solidus_static_content'
 gem 'solidus_content_blocks', path: 'lib/gems/solidus_content_blocks'
 gem 'jquery-rails'
+
+gem 'dotenv', groups: [:development, :test]
