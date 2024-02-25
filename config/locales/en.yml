@@ -41,6 +41,9 @@ en:
           one: "Menu"
           other: "Menus"
   spree:
+    order_state:
+      enabled: Enabled
+    enabled_text: You are now registered. As soon as you are confirmed by the teacher you can proceed.
     datetime_picker:
       format: "%Y-%m-%d %H:%M"
     participant: "Participant"
