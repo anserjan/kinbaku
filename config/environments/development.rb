@@ -39,12 +39,18 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.raise_delivery_errors = true
-
   config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
+    address: ENV.fetch("KINBAKU_SMTP_ADDRESS"),
+    port: ENV.fetch("KINBAKU_SMTP_PORT"),
+    domain: ENV.fetch("KINBAKU_SMTP_DOMAIN"),
+    user_name: ENV.fetch("KINBAKU_SMTP_USER_NAME"),
+    password: ENV.fetch("KINBAKU_SMTP_PASSWORD"),
     authentication:  'plain',
-    enable_starttls: true,
+    enable_starttls_auto: true,
+    open_timeout: 5,
+    read_timeout: 5
   }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
