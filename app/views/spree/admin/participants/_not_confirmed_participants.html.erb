@@ -1,0 +1,32 @@
+<h2><%= I18n.t('spree.participants.requested_participants') %></h2>
+<table class='index participant_table'>
+  <colgroup>
+    <col style='width:90%'>
+    <col style='width:10%'>
+  </colgroup>
+  <thead>
+    <tr>
+      <th><%= I18n.t('spree.user') %></th>
+      <th><%= I18n.t('spree.confirmed') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% participants.each do |participant| %>
+      <%= form_for [:admin, @product, participant] do |f| %>
+        <tr>
+          <td>
+            <%= link_to participant.user.email, edit_admin_user_path(participant.user) %>
+            <%= link_to_with_icon('email', t('spree.actions.send_email'), "mailto:#{participant.user.email}", no_text: true) %>
+          </td>
+          <td>
+            <% if participant.confirmed %>
+              <%= link_to I18n.t("spree.yes"), toggle_confirm_admin_product_participant_path(@product, participant), class: "align-right", method: :put %>
+            <% else %>
+              <%= link_to I18n.t("spree.no"), toggle_confirm_admin_product_participant_path(@product, participant), class: "align-right", method: :put %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

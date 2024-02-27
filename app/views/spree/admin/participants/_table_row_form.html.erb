@@ -1,31 +1,23 @@
-<% user = Spree::User.find_by(email: participant.email) %>
+<% user = participant.user %>
 <tr>
-  <% if user.present? && user.spree_roles.present? %>
+  <% if user.present? %>
     <td>
-      <%= link_to participant.email, edit_admin_user_path(user) %>
-      <%= link_to_with_icon('email', t('spree.actions.send_email'), "mailto:#{participant.email}", no_text: true) %>
+      <%= link_to user.email, edit_admin_user_path(user) %>
+      <%= link_to_with_icon('email', t('spree.actions.send_email'), "mailto:#{user.email}", no_text: true) %>
     </td>
-    <td><%= link_to participant.order.number, edit_admin_order_path(participant.order) %></td>
-    <td><%= user.spree_roles.map(&:name).to_sentence.capitalize %></td>
-  <% elsif user.present? && !user.spree_roles.present? %>
-    <td>
-      <%= link_to participant.email, edit_admin_user_path(user) %>
-      <%= link_to_with_icon('email', t('spree.actions.send_email'), "mailto:#{participant.email}", no_text: true) %>
-    </td>
-    <td><%= link_to participant.order.number, edit_admin_order_path(participant.order) %></td>
-    <td><%= I18n.t("spree.user") %></td>
+    <td>None</td>
+    <td><%= user.spree_roles.present? ? user.spree_roles.map(&:name).to_sentence.capitalize : I18n.t("spree.user") %></td>
   <% else %>
     <td>
       <%= participant.email %>
       <%= link_to_with_icon('email', t('spree.actions.send_email'), "mailto:#{participant.email}", no_text: true) %>
     </td>
-    <td><%= link_to participant.order.number, edit_admin_order_path(participant.order) %></td>
+    <td><%= link_to participant.order.number, edit_admin_order_path(participant.order) if participant.order.present? %></td>
     <td><%= I18n.t("spree.guest") %></td>
   <% end %>
 
   <td><%= participant.payment %></td>
   <td><%= Spree::Money.new(participant.amount_paid(@product)) %></td>
-  <td class="align-right"><%= participant.description %></td>
   <td><%= link_to_with_icon("edit", I18n.t("spree.actions.edit"), edit_admin_product_participant_path(@product, participant), no_text: true) %></td>
   <td class="align-right actions">
     <% if participant.payment.present? %>

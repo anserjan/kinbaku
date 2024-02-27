@@ -82,7 +82,11 @@ Spree::Core::Engine.routes.draw do
   
   namespace :admin do
     resources :products do
-      resources :participants
+      resources :participants do
+        member do
+          put :toggle_confirm
+        end
+      end
     end
     resources :trainer_cash_lists
     resources :users do

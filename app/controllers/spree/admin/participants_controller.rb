@@ -18,6 +18,13 @@ module Spree
         participant.save
         redirect_to admin_product_participants_path(params[:product_id])
       end
+
+      def toggle_confirm
+        participant = Spree::Participant.find(params[:id])
+        participant.confirmed = !participant.confirmed
+        participant.save
+        redirect_to admin_product_participants_path(params[:product_id])
+      end
     end
   end
 end
