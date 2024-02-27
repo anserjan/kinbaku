@@ -7,7 +7,7 @@
 %>
 
 <% present_participant = product.participants.select { |p| p.user.eql? spree_current_user }.first %>
-<% if present_participant.present? && present_participant.confirmed %>
+<% if present_participant && present_participant.confirmed %>
   <%= form_for :order, url: populate_orders_path, html: schema_properties do |f| %>
     <% if product_variants_with_options(product).any? %>
       <div class="variant-container">
@@ -32,13 +32,15 @@
       </div>
     <% end %>
   <% end %>
-<% elsif present_participant.present? && !present_participant.confirmed %>
+<% elsif present_participant && !present_participant.confirmed %>
   <p><%= I18n.t('spree.participants.reserve_waiting_information') %></p>
-<% else %>
+<% elsif spree_current_user %>
   <p><%= I18n.t('spree.participants.reserve_information') %></p>
   <%= form_for :participants, url: reserve_user_path, method: :post do |f| %>
     <%= f.hidden_field :user_id, value: spree_current_user.id %>
     <%= f.hidden_field :product_id, value: product.id %>
     <%= f.button I18n.t('spree.participants.reserve'), class: 'button-primary' %>
   <% end %>
+<% else %>
+  <%= I18n.t('spree.participants.register_notice', link: link_to(I18n.t('spree.login'), login_path)).html_safe %>
 <% end %>
