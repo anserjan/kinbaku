@@ -15,6 +15,7 @@ Spree.config do |config|
   Spree::Money.default_formatting_rules[:format] = '%n %u'
   Spree::Money.default_formatting_rules[:sign_before_symbol] = false
   Spree::PermittedAttributes.user_attributes << :spree_role_ids
+  config.address_requires_state = false
 
   # from address for transactional emails
 

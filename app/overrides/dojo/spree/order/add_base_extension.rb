@@ -5,6 +5,7 @@ module Dojo
 
         def self.prepended(base)
           base.remove_checkout_step :delivery
+          base.remove_checkout_step :address
         end
   
         ::Spree::Order.prepend self
