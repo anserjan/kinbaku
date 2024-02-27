@@ -6,41 +6,22 @@ module Dojo
 
     def create_participants_on_order_completed(event)
       order = event.payload[:order]
+      user = order.user
       order.products.each do |product|
-        unless participant_exits(order, product)
-          # if order mit paypal bezahlt oder als Vereinsmitgliedpromotion setze payment_status
-          if validate_for_payment_status(order)
-            participant = ::Spree::Participant.create(product: product, order: order, email: get_email(order), payment_status: true)
-          else
-            participant = ::Spree::Participant.create(product: product, order: order, email: get_email(order))
-          end
-          participant.save
-        end
-      end
-    end
-
-    def participant_exits current_order, current_product
-      if current_order.user.present?
-        return current_product.participants.any? { |participant| participant.email.eql? current_order.user.email }
-      end
-    end
-
-    def get_email order
-      if order.user
-        return order.user.email
-      else
-        return order.email
+        participant = ::Spree::Participant.find_by(user_id: user.id, product_id: product.id)
+        participant.order = order
+      #   # if order mit paypal bezahlt oder als Vereinsmitgliedpromotion setze payment_status
+        validate_for_payment_status(order) ? participant.payment_status = true : nil
+        participant.save
       end
     end
 
     def validate_for_payment_status order
       order.adjustments.each do |adjustment|
-        if adjustment.eligible && adjustment.label.downcase.include?("verein")
-          return true
-        end
+        return true if adjustment.eligible && adjustment.label.downcase.include?('verein')
       end
       order.payments.each do |payment| 
-        if payment.state.eql?("completed") || payment.payment_method.name.downcase.include?("paypal")
+        if payment.state.eql?('completed') || payment.payment_method.name.downcase.include?('paypal')
          return true
         end
       end

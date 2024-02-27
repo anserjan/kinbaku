@@ -12,31 +12,6 @@ Spree::Role.find_or_create_by(name: "schüler")
 Spree::Role.find_or_create_by(name: "vereinsmitglied")
 Spree::Role.find_or_create_by(name: "trainer")
 Spree::Menu.find_or_create_by(link_text: "Footer")
-Spree::Menu.find_or_create_by(
-  link_text: "Verein",
-  url: "/verein",
-  parent_id: Spree::Menu.find_or_create_by(link_text: "Header")
-)
-Spree::Menu.find_or_create_by(
-  link_text: "Infos",
-  url: "/infos",
-  parent_id: Spree::Menu.find_or_create_by(link_text: "Header")
-)
-Spree::Menu.find_or_create_by(
-  link_text: "Training und Workshops",
-  url: "/training-und-workshops",
-  parent_id: Spree::Menu.find_or_create_by(link_text: "Header")
-)
-Spree::Menu.find_or_create_by(
-  link_text: "Shop",
-  url: "/products",
-  parent_id: Spree::Menu.find_or_create_by(link_text: "Header")
-)
-Spree::Menu.find_or_create_by(
-  link_text: "Gallerie",
-  url: "/gallerie",
-  parent_id: Spree::Menu.find_or_create_by(link_text: "Header")
-)
 Spree::Store.find_by(code: "sample-store").destroy!
 Spree::Store.find_or_create_by(name: "Kinbaku Dojo e.V", url: "kinbaku-berlin.de", code: "kinbaku", mail_from_address: "shop@kinbaku-berlin.de", default_currency: "EUR")
 Spree::Taxonomy.find_or_create_by(name: "Level")
@@ -75,6 +50,7 @@ Spree::Taxon.find_or_create_by(
   parent_id: Spree::Taxon.find_by(permalink: "kurstypen").id,
 )
 Spree::Page.create(
-  title: "Start",
+  title: "Verein",
+  slug: "/verein",
   body: "Welcome to our Dojo"
 )

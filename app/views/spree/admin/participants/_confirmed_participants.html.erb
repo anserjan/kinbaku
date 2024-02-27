@@ -1,14 +1,12 @@
 <h2><%= I18n.t("spree.participants.registered_participants") %></h2>
 <table class="index participant_table">
   <colgroup>
+    <col style="width:25%;">
+    <col style="width:20%;">
     <col style="width:15%;">
-    <col style="width:15%;">
     <col style="width:10%;">
     <col style="width:10%;">
-    <col style="width:10%;">
-    <col style="width:30%;">
-    <col style="width:5%;">
-    <col style="width:5%;">
+    <col style="width:20%;">
   </colgroup>
   <thead>
     <tr>
@@ -17,8 +15,6 @@
       <th><%= I18n.t("spree.roles") %></th>
       <th><%= I18n.t("spree.payment_method") %></th>
       <th><%= I18n.t("spree.price") %></th>
-      <th class="align-right"><%= I18n.t("spree.confirmed") %></th>
-      <th></th>
       <th class="align-right"><%= Spree::Payment.human_attribute_name(:payment_state) %></th>
     </tr>
   </thead>

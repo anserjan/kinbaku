@@ -1,7 +1,7 @@
 <%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Participant' } %>
 <%= render partial: 'spree/admin/participants/trainers_form' if can?(:update, Spree::Product) %>
 
-<%#%> admin_breadcrumb(t('spree.participants')) %>
+<% admin_breadcrumb(plural_resource_name(Spree::Participant)) %>
 
 <% if @participants.any? %>
   <% not_confirmed_participants = @participants.select { |participant| participant.order.eql? nil } %>
