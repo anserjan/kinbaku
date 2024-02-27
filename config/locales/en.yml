@@ -43,11 +43,15 @@ en:
   spree:
     order_state:
       enabled: Enabled
-    enabled_text: You are now registered. As soon as you are confirmed by the teacher you can proceed.
     datetime_picker:
       format: "%Y-%m-%d %H:%M"
     participant: "Participant"
     participants: "Participants"
+    participants:
+      reserve: "Reserve"
+      reserve_information: "Note: You are requesting a reservation, as soon as you are confirmed by the teacher you can proceede the checkout process."
+      reserve_confirmed_information: "Your reservation was confirmed you can proceede the checkout process."
+      reserve_waiting_information: "Note: Your reservation is pending as soon as you are confirmed by the teacher you can proceede the checkout process."
     no_participant_found: "No participant found"
     mark_as_paid: "Mark as paid"
     mark_as_payment_due: "Mark as payment due"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_03_121600) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_27_004700) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -201,7 +201,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_121600) do
     t.string "content_type"
     t.string "block_name"
     t.text "body_1"
-    t.boolean "visible", default: true
+    t.boolean "visible", default: false
     t.integer "position", default: 0
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -451,6 +451,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_121600) do
     t.boolean "show_in_sidebar", default: false, null: false
     t.string "meta_title"
     t.boolean "render_layout_as_partial", default: false
+    t.integer "menu_id"
     t.index ["slug"], name: "index_spree_pages_on_slug"
   end
 
@@ -468,9 +469,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_121600) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "payment_status", default: false
-    t.string "email"
     t.integer "order_id"
-    t.string "description"
+    t.boolean "confirmed", default: false
+    t.integer "user_id"
     t.index ["product_id"], name: "index_spree_participants_on_product_id"
   end
 

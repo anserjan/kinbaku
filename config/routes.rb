@@ -77,6 +77,9 @@ Spree::Core::Engine.routes.draw do
   get '/unauthorized', to: 'home#unauthorized', as: :unauthorized
   get '/cart_link', to: 'store#cart_link', as: :cart_link
 
+  # register participant for confirmation
+  post 'participants/reserve', to: 'participants#reserve', as: :reserve_user
+  
   namespace :admin do
     resources :products do
       resources :participants
