@@ -5,6 +5,69 @@
 html {
   scroll-behavior: smooth;
 }
+// products images
+
+.yellow {
+  position: relative;
+  img {
+    filter: grayscale(100%);
+  }
+  p {
+    background-color: black;
+    color: white;
+    font-size: xx-large;
+    left: 40px;
+    position: absolute;
+    transform: rotateZ(26deg);
+    top: 44px;
+  }
+}
+
+.green {
+  position: relative;
+  img {
+    filter: grayscale(100%);
+  }
+  p {
+    background-color: black;
+    color: white;
+    font-size: xx-large;
+    left: 40px;
+    position: absolute;
+    transform: rotateZ(26deg);
+    top: 44px;
+  }
+}
+
+.product-image.green {
+  img {
+    filter: grayscale(100%);
+  }
+  p {
+    background-color: black;
+    color: white;
+    font-size: xx-large;
+    left: 134px;
+    position: absolute;
+    transform: rotateZ(26deg);
+    top: 132px;
+  }
+}
+
+.product-image.green {
+  img {
+    filter: grayscale(100%);
+  }
+  p {
+    background-color: black;
+    color: white;
+    font-size: xx-large;
+    left: 134px;
+    position: absolute;
+    transform: rotateZ(26deg);
+    top: 132px;
+  }
+}
 
 .content_richtext a,
 .pages a,
@@ -42,7 +105,7 @@ html {
   flex-grow: 0;
 }
 
-section:before {
+.pages ~ section::before {
   content: "";
   display: block;
   height: 100px;

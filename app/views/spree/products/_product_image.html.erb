@@ -1,4 +1,17 @@
-<picture class="product-image">
+<%
+  participant = product.participants.select{ |participant| participant.user.eql? spree_current_user }.first
+  if participant.present?
+    if participant.confirmed 
+      class_name = "green"
+      message = "Angemeldet"
+    else
+      class_name = "yellow"
+      message = "Angefragt"
+    end
+  end
+%>
+
+<picture class="product-image <%= class_name %>">
   <% if product.gallery.images.first.present? %>
     <%= render(ImageComponent.new(
       image: product.gallery.images.first,
@@ -9,4 +22,5 @@
   <% else %>
     <%= image_tag "placeholder_products.jpg"%>
   <% end %>
+  <p><%= message %></p>
 </picture>

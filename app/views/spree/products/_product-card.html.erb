@@ -14,15 +14,29 @@
   product_id = "product_#{product.id}"
 %>
 
+<%
+  participant = product.participants.select{ |participant| participant.user.eql? spree_current_user }.first
+  if participant.present?
+    if participant.confirmed 
+      class_name = "green"
+      message = "Angemeldet"
+    else
+      class_name = "yellow"
+      message = "Angefragt"
+    end
+  end
+%>
+
 <% cache cached do %>
   <li class="<%= class_names %>" itemscope itemtype="http://schema.org/Product" id=<%= product_id %>>
     <article>
-      <section class="product-card_image">
+      <section class="product-card_image <%= class_name %>">
         <% if product.gallery.images.first.present? %>
           <%= link_to render(ImageComponent.new(image: product.gallery.images.first, size: :small, itemprop: "image")), url, itemprop: 'url' %>
         <% else %>
           <%= link_to image_tag("placeholder_products.jpeg"), url, itemprop: 'url' %>
         <% end %>
+        <p><%= message %></p>
       </section>
       <header class="product-card_header">
         <h2>
