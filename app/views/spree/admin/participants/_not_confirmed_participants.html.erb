@@ -1,4 +1,4 @@
-<h2><%= I18n.t('spree.participants.requested_participants') %></h2>
+<h2><%= I18n.t('spree.requested_participants') %></h2>
 <table class='index participant_table'>
   <colgroup>
     <col style='width:90%'>
@@ -16,13 +16,13 @@
         <tr>
           <td>
             <%= link_to participant.user.email, edit_admin_user_path(participant.user) %>
-            <%= link_to_with_icon('email', t('spree.actions.send_email'), "mailto:#{participant.user.email}", no_text: true) %>
+            <%= link_to_with_icon 'email', t('spree.actions.send_email'), "mailto:#{participant.user.email}", no_text: true %>
           </td>
-          <td>
+          <td class='actions'>
             <% if participant.confirmed %>
-              <%= link_to I18n.t("spree.yes"), toggle_confirm_admin_product_participant_path(@product, participant), class: "align-right", method: :put %>
+              <%= link_to_with_icon 'check', I18n.t("spree.yes"), toggle_confirm_admin_product_participant_path(@product, participant), method: :put, no_text: true %>
             <% else %>
-              <%= link_to I18n.t("spree.no"), toggle_confirm_admin_product_participant_path(@product, participant), class: "align-right", method: :put %>
+              <%= link_to_with_icon 'ban', I18n.t("spree.no"), toggle_confirm_admin_product_participant_path(@product, participant), method: :put, no_text: true %>
             <% end %>
           </td>
         </tr>

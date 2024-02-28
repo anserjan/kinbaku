@@ -22,7 +22,7 @@
     <%= render 'product_variants', product: product %>
 
     <% if product.price %>
-      <p><%= I18n.t('spree.participants.reserve_confirmed_information') %></p>
+      <p><%= I18n.t('spree.reserve_confirmed_information') %></p>
       <%= render 'product_submit', product: product %>
     <% else %>
       <div id='product-price'>
@@ -33,14 +33,14 @@
     <% end %>
   <% end %>
 <% elsif present_participant && !present_participant.confirmed %>
-  <p><%= I18n.t('spree.participants.reserve_waiting_information') %></p>
+  <p><%= I18n.t('spree.reserve_waiting_information') %></p>
 <% elsif spree_current_user %>
-  <p><%= I18n.t('spree.participants.reserve_information') %></p>
+  <p><%= I18n.t('spree.reserve_information') %></p>
   <%= form_for :participants, url: reserve_user_path, method: :post do |f| %>
     <%= f.hidden_field :user_id, value: spree_current_user.id %>
     <%= f.hidden_field :product_id, value: product.id %>
-    <%= f.button I18n.t('spree.participants.reserve'), class: 'button-primary' %>
+    <%= f.button I18n.t('spree.reserve'), class: 'button-primary' %>
   <% end %>
 <% else %>
-  <%= I18n.t('spree.participants.register_notice', link: link_to(I18n.t('spree.login'), login_path)).html_safe %>
+  <%= I18n.t('spree.register_notice', link: link_to(I18n.t('spree.login'), login_path)).html_safe %>
 <% end %>

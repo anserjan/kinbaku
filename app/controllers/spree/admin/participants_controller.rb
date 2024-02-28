@@ -23,7 +23,7 @@ module Spree
         participant = Spree::Participant.find(params[:id])
         participant.confirmed = !participant.confirmed
         participant.save
-        redirect_to admin_product_participants_path(params[:product_id])
+        redirect_back fallback_location: admin_product_participants_path(params[:product_id])
       end
     end
   end

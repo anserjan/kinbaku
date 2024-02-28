@@ -50,17 +50,54 @@
   </div>
 <% end %>
 
+<% if @collection.any? %>
+<%
+  participants = Spree::Participant.all.select { |participant| !participant.confirmed }
+%>
+<fieldset class="no-border-top">
+  <legend><%= I18n.t('spree.requested_participants') %></legend>
+  <table>
+    <colgroup>
+      <col style='width:15%'>
+      <col style='width:25%'>
+      <col style='width:15%'>
+      <col style='width:45%'>
+    </colgroup>
+      <thead>
+        <tr>
+          <th><%= I18n.t('spree.user') %></th>
+          <th><%= I18n.t('spree.course') %></th>
+          <th><%= I18n.t('spree.date_and_time') %></th>
+          <th class='actions'><%= I18n.t('spree.confirmed') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% participants.each do |participant| %>
+          <tr>
+            <td>
+              <%= link_to participant.user.email, edit_admin_user_path(participant.user) %>
+              <%= link_to_with_icon 'email', t('spree.actions.send_email'), 'mailto:#{participant.user.email}', no_text: true %>
+            </td>
+            <td><%= link_to participant.product.name, admin_product_url(participant.product) %></td>
+            <td><%= participant.product.date_and_time.strftime("%Y-%m-%d") %></td>
+            <td class='actions'>
+              <%= link_to_with_icon 'check', I18n.t("spree.no"), toggle_confirm_admin_product_participant_path(participant.product, participant), class: "align-right", method: :put, no_text: true %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </colgroup>
+  </table>
+</fieldset>
 <div id="new_product_wrapper" data-hook></div>
 
 <%= paginate @collection, theme: "solidus_admin" %>
-<% if @collection.any? %>
   <table class="index" id="listing_products">
     <colgroup>
-       <col style="width: 15%;">
        <col style="width: 5%;">
+       <col style="width: 25%;">
+       <col style="width: 10%;">
        <col style="width: 20%;">
-       <col style="width: 10%;">
-       <col style="width: 10%;">
        <col style="width: 10%;">
        <col style="width: 10%;">
        <col style="width: 10%;">
@@ -68,7 +105,6 @@
     </colgroup>
     <thead>
       <tr data-hook="admin_products_index_headers">
-        <th><%= Spree::Variant.human_attribute_name(:sku) %></th>
         <th></th>
         <th><%= sort_link @search, :name, Spree::Product.human_attribute_name(:name), {}, {title: 'admin_products_listing_name_title'} %></th>
         <th><%= sort_link @search, :date_and_time %></th>
@@ -82,7 +118,6 @@
     <tbody>
       <% @collection.each do |product| %>
         <tr <%== "style='color: red;'" if product.deleted? %> id="<%= spree_dom_id product %>" data-hook="admin_products_index_rows">
-          <td><%= product.sku %></td>
           <td class="align-center"><%= render 'spree/admin/shared/image', image: product.gallery.images.first, size: :mini %></td>
           <td><%= link_to product.try(:name), admin_product_participants_url(product) %></td>
           <td><%= product.date_and_time.strftime("%Y-%m-%d") %></td>
