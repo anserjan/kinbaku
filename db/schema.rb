@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_27_004700) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_28_012500) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -592,6 +592,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_004700) do
     t.datetime "date_and_time"
     t.integer "trainer_id"
     t.integer "participants_count"
+    t.boolean "course_confirmed", default: false
     t.index ["available_on"], name: "index_spree_products_on_available_on"
     t.index ["deleted_at"], name: "index_spree_products_on_deleted_at"
     t.index ["name"], name: "index_spree_products_on_name"
