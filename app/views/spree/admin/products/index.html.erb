@@ -81,7 +81,7 @@
               <%= link_to_with_icon 'email', t('spree.actions.send_email'), 'mailto:#{participant.user.email}', no_text: true %>
             </td>
             <td><%= link_to participant.product.name, admin_product_url(participant.product) %></td>
-            <td><%= participant.product.date_and_time.strftime('%Y-%m-%d') %></td>
+            <td><%= participant.product.date_and_time.strftime('%Y-%m-%d %H:%M') %></td>
             <td><%= participant.product.participants.length %></td>
             <td class='actions'>
               <%= link_to_with_icon 'check', I18n.t('spree.yes'), toggle_confirm_admin_product_participant_path(participant.product, participant), class: 'align-right', method: :put, no_text: true %>
