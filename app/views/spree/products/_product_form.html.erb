@@ -7,7 +7,7 @@
 %>
 
 <% present_participant = product.participants.select { |p| p.user.eql? spree_current_user }.first %>
-<% if present_participant && present_participant.confirmed %>
+<% if present_participant && present_participant.confirmed || product.course_confirmed %>
   <%= form_for :order, url: populate_orders_path, html: schema_properties do |f| %>
     <% if product_variants_with_options(product).any? %>
       <div class="variant-container">

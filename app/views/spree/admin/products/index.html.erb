@@ -79,9 +79,9 @@
               <%= link_to_with_icon 'email', t('spree.actions.send_email'), 'mailto:#{participant.user.email}', no_text: true %>
             </td>
             <td><%= link_to participant.product.name, admin_product_url(participant.product) %></td>
-            <td><%= participant.product.date_and_time.strftime("%Y-%m-%d") %></td>
+            <td><%= participant.product.date_and_time.strftime('%Y-%m-%d') %></td>
             <td class='actions'>
-              <%= link_to_with_icon 'check', I18n.t("spree.no"), toggle_confirm_admin_product_participant_path(participant.product, participant), class: "align-right", method: :put, no_text: true %>
+              <%= link_to_with_icon 'check', I18n.t('spree.yes'), toggle_confirm_admin_product_participant_path(participant.product, participant), class: 'align-right', method: :put, no_text: true %>
             </td>
           </tr>
         <% end %>
@@ -128,7 +128,10 @@
           <td><%= product.trainer.name_and_email if product.trainer.present? %></td>
           <td class="align-right"><%= product.display_price&.to_html %></td>
           <td class="actions" data-hook="admin_products_index_row_actions">
-            <%= link_to_with_icon "edit", I18n.t("spree.edit"), admin_product_participants_url(product), no_text: true, class: "edit" if can?(:admin, Spree::Participant) && !product.deleted? %>
+            <% if !product.course_confirmed %>
+              <%= link_to_with_icon 'check', I18n.t('spree.confirm'), unlock_course_admin_product_path(product), class: 'align-right', method: :put, no_text: true %>
+            <% end %>
+            <%= link_to_with_icon 'edit', I18n.t('spree.edit'), admin_product_participants_url(product), no_text: true, class: 'edit' if can?(:admin, Spree::Participant) && !product.deleted? %>
             &nbsp;
             <%= link_to_clone product, no_text: true, class: 'clone' if can?(:clone, product) %>
             &nbsp;

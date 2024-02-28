@@ -82,6 +82,9 @@ Spree::Core::Engine.routes.draw do
   
   namespace :admin do
     resources :products do
+      member do
+        put :unlock_course
+      end
       resources :participants do
         member do
           put :toggle_confirm
