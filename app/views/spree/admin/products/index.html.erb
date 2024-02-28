@@ -61,6 +61,7 @@
       <col style='width:15%'>
       <col style='width:25%'>
       <col style='width:15%'>
+      <col style='width:15%'>
       <col style='width:45%'>
     </colgroup>
       <thead>
@@ -68,6 +69,7 @@
           <th><%= I18n.t('spree.user') %></th>
           <th><%= I18n.t('spree.course') %></th>
           <th><%= I18n.t('spree.date_and_time') %></th>
+          <th><%= I18n.t('spree.participants') %></th>
           <th class='actions'><%= I18n.t('spree.confirmed') %></th>
         </tr>
       </thead>
@@ -80,6 +82,7 @@
             </td>
             <td><%= link_to participant.product.name, admin_product_url(participant.product) %></td>
             <td><%= participant.product.date_and_time.strftime('%Y-%m-%d') %></td>
+            <td><%= participant.product.participants.length %></td>
             <td class='actions'>
               <%= link_to_with_icon 'check', I18n.t('spree.yes'), toggle_confirm_admin_product_participant_path(participant.product, participant), class: 'align-right', method: :put, no_text: true %>
             </td>
