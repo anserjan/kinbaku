@@ -1,7 +1,7 @@
 module Spree
   class Participant < Spree::Base
 
-    belongs_to :product, class_name: 'Spree::Product', inverse_of: :participants, counter_cache: true
+    belongs_to :product, class_name: 'Spree::Product', inverse_of: :participants, counter_cache: true, dependent: :destroy
     belongs_to :order, class_name: 'Spree::Order', optional: true
     belongs_to :user, class_name: 'Spree::User', inverse_of: :participants
 
