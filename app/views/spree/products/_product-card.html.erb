@@ -16,13 +16,15 @@
 
 <%
   participant = product.participants.select{ |participant| participant.user.eql? spree_current_user }.first
-  if participant.present?
-    if participant.confirmed 
-      class_name = "green"
-      message = "Angemeldet"
+  if user_bought_product_at(product).present?
+    class_name = 'registered'
+    message = I18n.t('spree.registered_confirmed')
+  elsif !user_bought_product_at(product).present? && participant.present?
+    class_name = 'registered'
+    if participant.confirmed
+      message = I18n.t('spree.action_needed')
     else
-      class_name = "yellow"
-      message = "Angefragt"
+      message = I18n.t('spree.registration_pending')
     end
   end
 %>

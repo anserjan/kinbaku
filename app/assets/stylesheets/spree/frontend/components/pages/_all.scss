@@ -5,9 +5,22 @@
 html {
   scroll-behavior: smooth;
 }
+
 // products images
+.registered {
+  img {
+    filter: grayscale(100%);
+  }
+  p {
+    background-color: black;
+    color: white;
+    display: block;
+    margin: 0 auto 12px auto;
+    width: fit-content;
+  }
+}
 
-.yellow {
+.product-image.registered {
   position: relative;
   img {
     filter: grayscale(100%);
@@ -15,57 +28,10 @@ html {
   p {
     background-color: black;
     color: white;
-    font-size: xx-large;
-    left: 40px;
-    position: absolute;
-    transform: rotateZ(26deg);
-    top: 44px;
-  }
-}
-
-.green {
-  position: relative;
-  img {
-    filter: grayscale(100%);
-  }
-  p {
-    background-color: black;
-    color: white;
-    font-size: xx-large;
-    left: 40px;
-    position: absolute;
-    transform: rotateZ(26deg);
-    top: 44px;
-  }
-}
-
-.product-image.green {
-  img {
-    filter: grayscale(100%);
-  }
-  p {
-    background-color: black;
-    color: white;
-    font-size: xx-large;
-    left: 134px;
-    position: absolute;
-    transform: rotateZ(26deg);
-    top: 132px;
-  }
-}
-
-.product-image.green {
-  img {
-    filter: grayscale(100%);
-  }
-  p {
-    background-color: black;
-    color: white;
-    font-size: xx-large;
-    left: 134px;
-    position: absolute;
-    transform: rotateZ(26deg);
-    top: 132px;
+    display: block;
+    margin: 0 auto 16px auto;
+    height: 26px;
+    width: fit-content;
   }
 }
 
