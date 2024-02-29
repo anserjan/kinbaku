@@ -19,20 +19,17 @@
   <td><%= participant.payment %></td>
   <td><%= Spree::Money.new(participant.amount_paid(@product)) %></td>
   <td class="align-right actions">
-    <% if participant.payment.present? %>
-      <% case participant.payment
-      when "Bar" %>
-        <% if participant.payment_status %>
-          <%= link_to I18n.t("spree.yes"), admin_product_participant_path(@product, participant), class: "align-right", method: :put %>
-        <% else %>
-          <%= link_to I18n.t("spree.no"), admin_product_participant_path(@product, participant), class: "align-right", method: :put %>
-        <% end %>
+    <% if participant.payment.present? && participant.payment.include?("Bar") %>
+      <% if participant.payment_status %>
+        <%= link_to_with_icon 'check', I18n.t("spree.yes"), admin_product_participant_path(@product, participant), class: "align-right", method: :put, no_text: true %>
       <% else %>
-        <% if participant.order.paid? %>
-          <%= I18n.t("spree.yes") %>
-        <% else %>
-          <%= I18n.t("spree.no") %>
-        <% end %>
+        <%= link_to_with_icon 'square-o', I18n.t("spree.no"), admin_product_participant_path(@product, participant), class: "align-right", method: :put, no_text: true %>
+      <% end %>
+    <% else %>
+      <% if participant.order.paid? %>
+        <%= I18n.t("spree.yes") %>
+      <% else %>
+        <%= I18n.t("spree.no") %>
       <% end %>
     <% end %>
   </td>
