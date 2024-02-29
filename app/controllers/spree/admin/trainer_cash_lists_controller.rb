@@ -10,7 +10,7 @@ module Spree::Admin
     def index
       trainers = Spree::User.trainers
 
-      @trainers_collection = trainers.collect { |trainer| [trainer.bill_address.name, trainer.id] }.push(["All", 0])
+      @trainers_collection = trainers.collect { |trainer| [trainer.email, trainer.id] }.push(["All", 0])
 
       if (!(params[:trainer_id].present?) || (params[:trainer_id].to_i.eql? 0))
         @choosen_id = 0

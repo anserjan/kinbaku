@@ -4,7 +4,7 @@ module Dojo
       module AddEmailAndName
 
         def name_and_email
-          "#{self.bill_address.name} (#{self.email})"
+          "#{self.email}"
         end
 
         ::Spree::User.prepend self
