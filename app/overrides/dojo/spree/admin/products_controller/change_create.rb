@@ -31,7 +31,7 @@ module Dojo
           private
           
           def set_default_name date
-            new_date = date.to_datetime.strftime(" %d.%m.%Y %H:%M")
+            new_date = date.to_datetime.strftime(" %a %d.%m.%Y %H:%M")
             if params[:product][:name].present?
               return params[:product][:name] + new_date
             else
