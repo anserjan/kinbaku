@@ -78,7 +78,7 @@
           <tr>
             <td>
               <%= link_to participant.user.email, edit_admin_user_path(participant.user) %>
-              <%= link_to_with_icon 'email', t('spree.actions.send_email'), 'mailto:#{participant.user.email}', no_text: true %>
+              <%= link_to_with_icon 'email', t('spree.actions.send_email'), "mailto: #{participant.user.email}", no_text: true %>
             </td>
             <td><%= link_to participant.product.name, admin_product_url(participant.product) %></td>
             <td><%= participant.product.date_and_time.strftime('%Y-%m-%d %H:%M') %></td>
