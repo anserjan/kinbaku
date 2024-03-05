@@ -206,10 +206,15 @@ html {
           word-break: break-word;
         }
         p {
+          background-color: white;
           color: #3c76f0;
           font-size: 1.4rem;
           font-weight: 500;
           text-align: center;
+        }
+        p.message {
+          background-color: black;
+          color: white;
         }
       }
     }
