@@ -52,7 +52,7 @@
 
 <% if @collection.any? %>
 <%
-  participants = Spree::Participant.all.select { |participant| !participant.confirmed }
+  participants = Spree::Participant.all.select { |participant| participant.state.include? 'request' }
 %>
 <fieldset class="no-border-top">
   <legend><%= I18n.t('spree.requested_participants') %></legend>

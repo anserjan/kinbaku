@@ -16,29 +16,21 @@
 
 <%
   participant = product.participants.select{ |participant| participant.user.eql? spree_current_user }.first
-  if user_bought_product_at(product).present?
-    class_name = 'registered'
-    message = I18n.t('spree.registered_confirmed')
-  elsif !user_bought_product_at(product).present? && participant.present?
-    class_name = 'registered'
-    if participant.confirmed
-      message = I18n.t('spree.action_needed')
-    else
-      message = I18n.t('spree.registration_pending')
-    end
+  if participant.present? 
+    message = participant.state_message
+    registered = 'registered'
   end
 %>
 
 <% cache cached do %>
-  <li class="<%= class_names %>" itemscope itemtype="http://schema.org/Product" id=<%= product_id %>>
+  <li class="<%= class_names %> <%= registered %>" itemscope itemtype="http://schema.org/Product" id=<%= product_id %>>
     <article>
-      <section class="product-card_image <%= class_name %>">
+      <section class="product-card_image">
         <% if product.gallery.images.first.present? %>
           <%= link_to render(ImageComponent.new(image: product.gallery.images.first, size: :small, itemprop: "image")), url, itemprop: 'url' %>
         <% else %>
           <%= link_to image_tag("placeholder_products.jpeg"), url, itemprop: 'url' %>
         <% end %>
-        <p><%= message %></p>
       </section>
       <header class="product-card_header">
         <h2>
@@ -55,5 +47,6 @@
         <span itemprop="priceCurrency" content="<%= current_pricing_options.currency %>"></span>
       </section>
     </article>
+    <p><%= message %></p>
   </li>
 <% end %>

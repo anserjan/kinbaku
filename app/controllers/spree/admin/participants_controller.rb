@@ -10,18 +10,18 @@ module Spree
       
       def update
         participant = Spree::Participant.find(params[:id])
-        if params[:participant].present?
-          participant.description = params[:participant][:description]
-        else
-          participant.payment_status = !participant.payment_status
-        end
+        participant.payment_status = !participant.payment_status
         participant.save
         redirect_to admin_product_participants_path(params[:product_id])
       end
 
       def toggle_confirm
         participant = Spree::Participant.find(params[:id])
-        participant.confirmed = !participant.confirmed
+        if participant.state.eql?('request')
+          participant.update_state('up')
+        else
+          participant.update_state('down')
+        end
         participant.save
         redirect_back fallback_location: admin_product_participants_path(params[:product_id])
       end

@@ -6,8 +6,10 @@
   }
 %>
 
-<% present_participant = product.participants.select { |p| p.user.eql? spree_current_user }.first %>
-<% if present_participant && present_participant.confirmed || product.course_confirmed %>
+<% participant = product.participants.select { |p| p.user.eql? spree_current_user }.first %>
+<!-- if course is already confirmed -->
+<% if product.course_confirmed %>
+  <% registered = 'registered' %>
   <%= form_for :order, url: populate_orders_path, html: schema_properties do |f| %>
     <% if product_variants_with_options(product).any? %>
       <div class="variant-container">
@@ -22,7 +24,6 @@
     <%= render 'product_variants', product: product %>
 
     <% if product.price %>
-      <p><%= I18n.t('spree.reserve_confirmed_information') %></p>
       <%= render 'product_submit', product: product %>
     <% else %>
       <div id='product-price'>
@@ -32,8 +33,38 @@
       </div>
     <% end %>
   <% end %>
-<% elsif present_participant && !present_participant.confirmed %>
-  <p><%= I18n.t('spree.reserve_waiting_information') %></p>
+<!-- user can buy now -->
+<% elsif participant.present? %>
+  <% if participant.state.include?('confirm') %>
+    <%= form_for :order, url: populate_orders_path, html: schema_properties do |f| %>
+      <% if product_variants_with_options(product).any? %>
+        <div class="variant-container">
+          <% sorted_option_types(product).each_with_index do |option_type, i| %>
+            <div class="variant-selection">
+              <%= render 'spree/products/product_selection/option_type', product: product, option_type: option_type, index: i %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <%= render 'product_variants', product: product %>
+
+      <% if product.price %>
+        <p><%= participant.state_message %></p>
+        <%= render 'product_submit', product: product %>
+      <% else %>
+        <div id='product-price'>
+          <p data-js='price' itemprop='price'>
+            <%= t('spree.product_not_available_in_this_currency') %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  <!-- user waiting for confirmation--->
+  <% elsif (participant.state.include? 'request') || (participant.state.include? 'complete') %>
+    <p><%= participant.state_message %></p>
+  <% end %>
+<!-- if user is logged in or not --->
 <% elsif spree_current_user %>
   <p><%= I18n.t('spree.reserve_information') %></p>
   <%= form_for :participants, url: reserve_user_path, method: :post do |f| %>

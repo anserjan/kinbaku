@@ -18,9 +18,6 @@
     <%= variant.options_text %>
   </p>
 
-  <div class="user_bought_product_at">
-    <%= content_tag(:div, user_bought_product_at(variant.product), class: "user_bought_product_at_text") %>
-  </div>
   <% if stock_info && line_item.insufficient_stock? %>
     <p class="<%= base_class %>__stock">
       <%= t('spree.out_of_stock') %>

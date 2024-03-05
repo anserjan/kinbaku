@@ -6,7 +6,7 @@ module Dojo
           
           def unlock_course
             @product.course_confirmed = true
-            @product.participants.each { |participant| participant.confirmed = true }
+            @product.participants.each { |participant| participant.complete_state }
             @product.save
             redirect_back fallback_location: :admin_products_path
           end

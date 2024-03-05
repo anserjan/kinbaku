@@ -10,6 +10,7 @@ module Dojo
       order.products.each do |product|
         participant = ::Spree::Participant.find_or_create_by(user_id: user.id, product_id: product.id)
         participant.order = order
+        participant.update_state('up')
       #   # if order mit paypal bezahlt oder als Vereinsmitgliedpromotion setze payment_status
         validate_for_payment_status(order) ? participant.payment_status = true : nil
         participant.save

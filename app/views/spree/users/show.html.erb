@@ -4,12 +4,12 @@
     <p><%= @user.email %> (<%= link_to I18n.t('spree.edit'), spree.edit_account_path %>)</p>
   </div>
 
-  <h2><%= I18n.t('spree.registered_courses') %></h2>
+  <h2><%= I18n.t('spree.reserved_courses') %></h2>
   <table>
     <colgroup>
+      <col style="width:30%;">
       <col style="width:50%;">
       <col style="width:30%;">
-      <col style="width:20%;">
     </colgroup>
     <thead>
       <tr>
@@ -25,15 +25,13 @@
             <%= link_to participant.product.name, product_path(participant.product), target: '_blank' %>
           </td>
           <td>
-            <%= participant.product.date_and_time.strftime('%Y-%m-%d %H:%M') %>
+            <%= participant.product.date_and_time.strftime('%Y-%m-%d %a %H:%M') %>
           </td>
           <td>
-            <% if participant.order.present? %>
-              <%= I18n.t('spree.registered_confirmed') %>
-            <% elsif participant.confirmed %>
-              <%= I18n.t('spree.action_needed') %>
+            <% if participant.state.include? 'confirm' %>
+              <%= link_to participant.state_message, product_url(participant.product), target: '_blank' %>
             <% else %>
-              <%= I18n.t('spree.registration_pending') %>
+              <%= participant.state_message %>
             <% end %>
           </td>
         </tr>

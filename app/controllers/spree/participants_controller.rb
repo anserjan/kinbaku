@@ -4,7 +4,8 @@ module Spree
     def reserve
       Spree::Participant.create(
         user_id: params[:participants][:user_id],
-        product_id: params[:participants][:product_id]
+        product_id: params[:participants][:product_id],
+        state: 'request'
       )
       redirect_to product_path(Spree::Product.find(params[:participants][:product_id]))
     end

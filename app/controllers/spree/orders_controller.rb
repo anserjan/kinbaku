@@ -52,7 +52,7 @@ module Spree
       authorize! :update, @order, cookies.signed[:guest_token]
 
       variant  = Spree::Variant.find(params[:variant_id])
-      quantity = params[:quantity].present? ? params[:quantity].to_i : 1
+      quantity = 1
 
       # 2,147,483,647 is crazy. See issue https://github.com/spree/spree/issues/2695.
       if !quantity.between?(1, 2_147_483_647)

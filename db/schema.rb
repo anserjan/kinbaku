@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_28_012500) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_04_195700) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -468,10 +468,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_28_012500) do
     t.integer "product_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.boolean "payment_status", default: false
     t.integer "order_id"
     t.boolean "confirmed", default: false
     t.integer "user_id"
+    t.boolean "payment_status"
+    t.string "state"
     t.index ["product_id"], name: "index_spree_participants_on_product_id"
   end
 

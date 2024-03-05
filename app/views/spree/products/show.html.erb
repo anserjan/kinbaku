@@ -9,9 +9,6 @@
 
       <div class="product-page__info">
         <%= render 'product_header', product: @product %>
-        <div class="user_bought_product_at">
-          <%= content_tag(:div, user_bought_product_at(@product), class: "user_bought_product_at_text") %>
-        </div>
         <%= render 'product_promotions', product: @product %>
         <%= render 'product_form', product: @product %>
       </div>

@@ -1,19 +1,12 @@
 <%
   participant = product.participants.select{ |participant| participant.user.eql? spree_current_user }.first
-  if user_bought_product_at(product).present?
-    class_name = 'registered'
-    message = I18n.t('spree.registered_confirmed')
-  elsif !user_bought_product_at(product).present? && participant.present?
-    class_name = 'registered'
-    if participant.confirmed
-      message = I18n.t('spree.action_needed')
-    else
-      message = I18n.t('spree.registration_pending')
-    end
+  if participant.present? 
+    message = participant.state_message
+    registered = 'registered'
   end
 %>
 
-<picture class="product-image <%= class_name %>">
+<picture class="product-image <%= registered %>">
   <% if product.gallery.images.first.present? %>
     <%= render(ImageComponent.new(
       image: product.gallery.images.first,
