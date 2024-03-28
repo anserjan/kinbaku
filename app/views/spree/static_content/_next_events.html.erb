@@ -3,8 +3,9 @@
   <div class='container'>
     <% cb.recent_events.first(3).each do |product| %>
       <% url = spree.product_path(product) %>
+      <% participant = product.participants.select { |p| p.user.eql? spree_current_user }.first %>
       <div class='card'>
-        <a href='<%= url %>' target='_blank' class='<%= 'registered' if product.participants.present? %>' >
+        <a href='<%= url %>' target='_blank' class='<%= 'registered' if participant.present? %>' >
           <% if product.gallery.images.first.present? %>
             <%= image_tag product.gallery.images.first.url %>
           <% else %>
@@ -13,9 +14,7 @@
           <div class='info'>
             <h2><%= product.name %></h2>
             <p><%= product.price_for_options(current_pricing_options)&.money.to_html %></p>
-            <% if product.participants.present? %>
-              <p class='message'><%= product.participants.select { |p| p.user.eql? spree_current_user }.first.state_message %></p>
-            <% end %>
+            <p class='message'><%= participant.state_message if participant.present? %></p>
           </div>
         </a>
       </div>
