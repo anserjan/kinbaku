@@ -14,10 +14,11 @@ module Dojo
                 description: set_description,
                 price: params[:product][:price],
                 date_and_time: params[:product][:date_and_time],
-                available_on: params[:product][:available_on],
+                available_on: set_available_on(params[:product][:available_on], params[:product][:date_and_time]),
                 promotionable: params[:product][:promotionable],
                 shipping_category_id: params[:product][:shipping_category_id], 
-                taxon_ids: params[:product][:taxon_ids]
+                taxon_ids: params[:product][:taxon_ids],
+                discontinue_on: set_discontinue_on(params[:product][:date_and_time])
               )
               set_stock_items
               set_default_image
@@ -51,6 +52,15 @@ module Dojo
 
           def set_default_image
             @product.images.create(attachment: @image)
+          end
+
+          def set_available_on available_on, date
+            return available_on if available_on.present?
+            return date.to_datetime - 7.days
+          end
+
+          def set_discontinue_on date
+            return date.to_datetime + 2.hours
           end
 
           def set_description
@@ -94,10 +104,11 @@ module Dojo
                 description: description,
                 price: params[:product][:price],
                 date_and_time: count_date,
-                available_on: params[:product][:available_on],
+                available_on: set_available_on(params[:product][:available_on], params[:product][:date_and_time]),
                 promotionable: params[:product][:promotionable],
                 shipping_category_id: params[:product][:shipping_category_id],
-                taxon_ids: params[:product][:taxon_ids]
+                taxon_ids: params[:product][:taxon_ids],
+                discontinue_on: set_discontinue_on(params[:product][:date_and_time])
               )
               if params[:repeat_pattern].eql? "weekly"
                 count_date = params[:product][:date_and_time].to_datetime + i.weeks
