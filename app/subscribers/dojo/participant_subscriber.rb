@@ -8,7 +8,7 @@ module Dojo
       order = event.payload[:order]
       user = order.user
       order.products.each do |product|
-        participant = ::Spree::Participant.find_or_create_by(user_id: user.id, product_id: product.id)
+        participant = product.participants.create(user_id: user.id)
         participant.order = order
         participant.update_state('up')
       #   # if order mit paypal bezahlt oder als Vereinsmitgliedpromotion setze payment_status
