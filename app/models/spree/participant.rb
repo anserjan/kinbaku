@@ -17,7 +17,7 @@ module Spree
         elsif self.state.eql? 'confirm'
           self.state = 'complete'
         else
-          self.state = 'request'
+          
         end
       else
         if self.state.eql? 'complete'
@@ -25,7 +25,7 @@ module Spree
         elsif self.state.eql? 'confirm'
           self.state = 'request'
         else
-          self.state = 'request'
+          
         end
       end
     end
@@ -38,6 +38,8 @@ module Spree
         return I18n.t('spree.finish_payment')
       elsif self.state.eql? 'request'
         return I18n.t('spree.reservation_pending')
+      else
+        return ""
       end
     end
     

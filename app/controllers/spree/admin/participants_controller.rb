@@ -23,6 +23,10 @@ module Spree
           participant.update_state('down')
         end
         participant.save
+        if participant.state.include? 'confirm'
+          Spree::ParticipantMailer.new.send_confirmed_reservation(participant.user, participant.product)
+          # todo flash E-Mail Nachricht
+        end
         redirect_back fallback_location: admin_product_participants_path(params[:product_id])
       end
     end

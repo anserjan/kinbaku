@@ -6,10 +6,15 @@
   }
 %>
 
-<% participant = product.participants.select { |p| p.user.eql? spree_current_user }.first %>
-<!-- if course is already confirmed -->
+<%
+  participant = product.participants.select{ |participant| participant.user.eql? spree_current_user }.first
+  if participant.present? 
+    message = participant.state_message
+    registered = 'registered'
+  end
+%><!-- if course is already confirmed -->
+<%= %>
 <% if product.course_confirmed %>
-  <% registered = 'registered' %>
   <%= form_for :order, url: populate_orders_path, html: schema_properties do |f| %>
     <% if product_variants_with_options(product).any? %>
       <div class="variant-container">
@@ -50,7 +55,7 @@
       <%= render 'product_variants', product: product %>
 
       <% if product.price %>
-        <p><%= participant.state_message %></p>
+        <p><%= message %></p>
         <%= render 'product_submit', product: product %>
       <% else %>
         <div id='product-price'>
@@ -62,7 +67,7 @@
     <% end %>
   <!-- user waiting for confirmation--->
   <% elsif (participant.state.include? 'request') || (participant.state.include? 'complete') %>
-    <p><%= participant.state_message %></p>
+    <p><%= message %></p>
   <% end %>
 <!-- if user is logged in or not --->
 <% elsif spree_current_user %>
