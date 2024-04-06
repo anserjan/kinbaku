@@ -1,0 +1,156 @@
+---
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   "true": "foo"
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+de:
+  hello: "Hallo Welt"
+  are_you_sure: "Bist Du sicher"
+  activerecord:
+      models:
+        spree/product:
+          one: "Kurse"
+          other: "Kurse"
+        spree/menu:
+          one: "Menü"
+          other: "Menüs"
+  spree:
+    mailer:
+      confirmed_reservation: "Deine Reservierung für %{product} wurde bestätigt"
+    order_state:
+      enabled: Aktiviert
+    datetime_picker:
+      format: "%J-%M-%T %h:%m"
+    participant: "Teilnehmer"
+    participants: "Teilnehmer"
+    reserve: "Reservierung"
+    reserve_information: "Hinweis: Du hast eine Reservierung angefragt. Sobald der Trainer diese bestätigt hat, kannst Du die Anmeldung abschließen."
+    reserve_confirmed_information: "Deine Reservierung wurde bestätigt. Du kannst nun zur Kasse gehen."
+    reserve_waiting_information: "Hinweis: Sobald Deine Reservierung von der Lehrkraft bestätigt wurde, kannst Du mit dem Bezahlen fortfahren."
+    registered_participants: "Angemeldete Teilnehmer"
+    requested_participants: "Teilnehmer erfragen Bestätigung"
+    reservation_confirmed: "Anmeldung abgeschlossen"
+    reservation_pending: "Anmeldebestätigung steht noch aus"
+    reserved_course: "Gebuchter Kurs"
+    reserved_courses: "Gebuchte Kurse"
+    finish_payment: "Bezahlung abgeschlossen"
+    course_purchased: "Bezahlter Kurs"
+    register_notice: "Du musst Dich %{link}, um Deinen Platz für einen Kurs zu reservieren."
+    no_participant_found: "Keine Teilnehmer gefunden"
+    confirmed: "Bestätigt"
+    mark_as_paid: "Als bezahlt markieren"
+    mark_as_payment_due: "Als offene Zahlung markieren"
+    trainer: "Trainer"
+    new_products: "Neue Kurse"
+    date_and_time: "Datum und Uhrzeit"
+    number_of_tickets: "Anzahl der Tickets"
+    "yes": "Ja"
+    "no": "Nein"
+    guest: "Gast"
+    hints:
+      spree/product:
+        name: "Der Store generiert den Namen aus Deinem Vornamen und dem Datum"
+        first_event: "Ab diesem Datum werden die Veranstaltungen nach dem gewählten Wiederholungsmuster angelegt"
+        date_and_time: "Datum und Uhrzeit für den Kurs festlegen"
+    address: "Adresse"
+    repeat_amount: "Wie oft Wiederholen"
+    repeat_pattern: "Muster wiederholen"
+    already_buyed_warning: "Du hast diesen Kurs bereits am %{date} gekauft"
+    get_cash_list: "Barbestandsliste abrufen"
+    total_cash: "Gesambarbestand"
+    total_deposits: "Einzahlungen gesamt"
+    remaining_cash: "Verbleibender Barbestand"
+    bank_deposit: "Bankeinzahlung"
+    deposit: "Einzahlung"
+    deposits: "Einzahlungen"
+    course: "Kurse"
+    invalid_deposit: "Ungültige Einzahlung"
+    add_product: "Kurs hinzufügen"
+    new_product: "Neuer Kurs"
+    no_products_found: "Kein Kurs gefunden"
+    product_details: "Kursdetails"
+    stock_management: "Kursbestand"
+    notice_messages:
+      product_cloned: "Der Kurs wurde geklont"
+      product_deletes: "Der Kurs wurde gelöscht"
+      product_not_cloned: "Kurs konnte nicht geklont werden"
+      product_not_deleted: "Kurs konnte nicht gelöscht werden"
+    admin:
+      tab:
+        cash_list: "Barbestandsliste"
+        products: "Kurse"
+        menu: "Menü"
+    menus: "Menüs"
+
+    new_menu: "Neuer Menüeintrag"
+    edit_menu: "Menüeintrag bearbeiten"
+    list_of_menus: "Menü-Liste"
+    link_text: "Link-Text"
+    url: "URL"
+    explain_url: "URL-Erklärung"
+    visible: "Sichtbar"
+    explain_visible: "Sichtbare Erläuterung"
+    parent_id: "Übergeordnetes Element"
+    explain_parent_id: "Erläuterung des übergeordneten Elements"
+    select_parent: "Übergeordnetes Element auswählen"
+    menu_bar_id: "ID Menü-Leiste"
+    select_menu_bar_id: "Menü-Leisten-ID auswählen"
+    explain_menu_bar_id: "ID Menü-Leiste Erläuterung"
+    page_id: "Seiten-ID"
+    select_page_id: "Seiten-ID auswählen"
+    explain_page_id: "Seiten-ID Erläuterung"
+    sequence: "Sequenz"
+    back: "Zurück zur Liste der Menüeinträge"
+  number:
+    currency:
+      format:
+        delimiter: ","
+        separator: "."
+        negative: "-"
+  amount_warning: "Falsches Zahlenformat"
+  blog: "Blog"
+  index:
+    listing_menus: "Liste der Menü-Einträge"
+    static_path: "statischer Pfad"
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
+    abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, July, August, September, Oktober, November, Dezember]
+    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]

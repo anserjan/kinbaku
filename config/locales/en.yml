@@ -1,3 +1,4 @@
+---
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -41,6 +42,8 @@ en:
           one: "Menu"
           other: "Menus"
   spree:
+    mailer:
+      confirmed_reservation: "Your Reservation for %{product} was confirmed"
     order_state:
       enabled: Enabled
     datetime_picker:

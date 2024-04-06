@@ -7,11 +7,11 @@ Spree.load_defaults '3.2.0'
 Spree.config do |config|
   # Core:
   # Default currency for new sites
-  config.currency = "EUR"
+  config.currency = 'EUR'
   config.address_requires_state = false
   config.admin_products_per_page = 50
   config.orders_per_page = 50
-  config.default_country_iso = "DE"
+  config.default_country_iso = 'DE'
   Spree::Money.default_formatting_rules[:format] = '%n %u'
   Spree::Money.default_formatting_rules[:sign_before_symbol] = false
   Spree::PermittedAttributes.user_attributes << :spree_role_ids
@@ -66,7 +66,7 @@ Spree.config do |config|
 end
 
 Spree::Backend::Config.configure do |config|
-  config.locale = 'de'
+  config.locale = :de
 
   # Uncomment and change the following configuration if you want to add
   # a new menu item:
