@@ -64,7 +64,7 @@ en:
     course_purchased: "Course Purchased"
     register_notice: "You need to %{link} to be able to reserve your spot for a course."
     no_participant_found: "No participant found"
-    confirmed: "Confirmed"
+    confirm: "Confirm"
     mark_as_paid: "Mark as paid"
     mark_as_payment_due: "Mark as payment due"
     trainer: "Trainer"

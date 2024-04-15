@@ -34,13 +34,18 @@ de:
   hello: "Hallo Welt"
   are_you_sure: "Bist Du sicher"
   activerecord:
-      models:
-        spree/product:
-          one: "Kurse"
-          other: "Kurse"
-        spree/menu:
-          one: "Menü"
-          other: "Menüs"
+    models:
+      spree/product:
+        one: "Kurse"
+        other: "Kurse"
+      spree/menu:
+        one: "Menü"
+        other: "Menüs"
+    attributes:
+      spree/store:
+        default_currency: "Standard Währung"
+        cart_tax_country_iso: "Warenkorb Steuer ISO"
+        available_locales: "Verfügbare Übersetzungen"
   spree:
     mailer:
       confirmed_reservation: "Deine Reservierung für %{product} wurde bestätigt"
@@ -55,16 +60,16 @@ de:
     reserve_confirmed_information: "Deine Reservierung wurde bestätigt. Du kannst nun zur Kasse gehen."
     reserve_waiting_information: "Hinweis: Sobald Deine Reservierung von dem Trainer bestätigt wurde, kannst Du mit dem Bezahlen fortfahren."
     registered_participants: "Angemeldete Teilnehmer"
-    requested_participants: "Teilnehmer erfragen Bestätigung"
+    requested_participants: "Teilnehmer Anmeldungen"
     reservation_confirmed: "Anmeldung abgeschlossen"
     reservation_pending: "Anmeldebestätigung steht noch aus"
     reserved_course: "Gebuchter Kurs"
     reserved_courses: "Gebuchte Kurse"
-    finish_payment: "Bezahlung abgeschlossen"
+    finish_payment: "Bezahlung abschließen"
     course_purchased: "Bezahlter Kurs"
     register_notice: "Du musst Dich %{link}, um Deinen Platz für einen Kurs zu reservieren."
     no_participant_found: "Keine Teilnehmer gefunden"
-    confirmed: "Bestätigt"
+    confirm: "Bestätigen"
     mark_as_paid: "Als bezahlt markieren"
     mark_as_payment_due: "Als offene Zahlung markieren"
     trainer: "Trainer"
