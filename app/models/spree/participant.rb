@@ -17,7 +17,7 @@ module Spree
         elsif self.state.eql? 'confirm'
           self.state = 'complete'
         else
-          
+          self.state = 'complete'
         end
       else
         if self.state.eql? 'complete'
@@ -25,7 +25,7 @@ module Spree
         elsif self.state.eql? 'confirm'
           self.state = 'request'
         else
-          
+          self.state = 'request'
         end
       end
     end
