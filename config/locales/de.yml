@@ -48,7 +48,8 @@ de:
         available_locales: "Verfügbare Übersetzungen"
   spree:
     mailer:
-      confirmed_reservation/subject: "Deine Reservierung für %{product} wurde bestätigt"
+      confirmed_reservation:
+        subject: "Deine Reservierung für %{product} wurde bestätigt"
     order_state:
       enabled: Aktiviert
     datetime_picker:

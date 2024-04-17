@@ -43,7 +43,8 @@ en:
           other: "Menus"
   spree:
     mailer:
-      confirmed_reservation/subject: "Your Reservation for %{product} was confirmed"
+      confirmed_reservation:
+        subject: "Your Reservation for %{product} was confirmed"
     order_state:
       enabled: Enabled
     datetime_picker:

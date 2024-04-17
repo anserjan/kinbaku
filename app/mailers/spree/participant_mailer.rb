@@ -10,7 +10,7 @@ module Spree
         mail(
         to: user.email,
         from: from_address(@store),
-        subject: "#{@store.name} #{I18n.t(:subject, scope: [:spree, :mailer, :confirmed_reservation], product: product )}",
+        subject: "#{@store.name} #{I18n.t(:subject, scope: [:spree, :mailer, :confirmed_reservation], product: product.name )}",
       )
     end
 
