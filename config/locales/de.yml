@@ -53,7 +53,7 @@ de:
     order_state:
       enabled: Aktiviert
     datetime_picker:
-      format: "%J-%M-%T %h:%m"
+      format: "%Y-%m-%d %H:%M"
     participant: "Teilnehmer"
     participants: "Teilnehmer"
     reserve: "Reservieren"
