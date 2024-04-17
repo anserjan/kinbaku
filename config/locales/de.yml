@@ -48,7 +48,7 @@ de:
         available_locales: "Verfügbare Übersetzungen"
   spree:
     mailer:
-      confirmed_reservation: "Deine Reservierung für %{product} wurde bestätigt"
+      confirmed_reservation/subject: "Deine Reservierung für %{product} wurde bestätigt"
     order_state:
       enabled: Aktiviert
     datetime_picker:
@@ -62,6 +62,7 @@ de:
     registered_participants: "Angemeldete Teilnehmer"
     requested_participants: "Teilnehmer Anmeldungen"
     reservation_confirmed: "Anmeldung abgeschlossen"
+    reservation_confirmed_flash: "Bestätigungs E-Mail gesendet"
     reservation_pending: "Anmeldebestätigung steht noch aus"
     reserved_course: "Gebuchter Kurs"
     reserved_courses: "Gebuchte Kurse"

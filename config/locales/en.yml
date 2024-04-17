@@ -43,7 +43,7 @@ en:
           other: "Menus"
   spree:
     mailer:
-      confirmed_reservation: "Your Reservation for %{product} was confirmed"
+      confirmed_reservation/subject: "Your Reservation for %{product} was confirmed"
     order_state:
       enabled: Enabled
     datetime_picker:
@@ -57,6 +57,7 @@ en:
     registered_participants: "Registered Participants"
     requested_participants: "Participants Request Confirmation"
     reservation_confirmed: "Reservation complete"
+    reservation_confirmed_flash: "Confirmation E-Mail send"
     reservation_pending: "Reservation confirmation pending"
     reserved_course: "Reserved Course"
     reserved_courses: "Reserved Courses"

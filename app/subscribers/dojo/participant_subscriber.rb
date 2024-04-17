@@ -3,6 +3,7 @@ module Dojo
     include Omnes::Subscriber
 
     handle :order_finalized, with: :create_participants_on_order_completed
+    handle :reservation_confirmed, with: :send_reservation_confirmed_email
 
     def create_participants_on_order_completed(event)
       order = event.payload[:order]
@@ -27,6 +28,11 @@ module Dojo
         end
       end
       return false
+    end
+
+    def send_reservation_confirmed_email(event)
+      participant = event.payload[:participant]
+      ::Spree::Config.participant_mailer_class.confirm_reservation(participant.user, participant.product).deliver
     end
 
   end

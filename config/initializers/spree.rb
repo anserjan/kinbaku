@@ -17,7 +17,7 @@ Spree.config do |config|
   Spree::PermittedAttributes.user_attributes << :spree_role_ids
   config.address_requires_state = false
   config.allow_guest_checkout = false
-  
+
   Spree::Auth::Config[:confirmable] = true
 
   # from address for transactional emails

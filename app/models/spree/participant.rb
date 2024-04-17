@@ -14,6 +14,7 @@ module Spree
       if direction.include? 'up'
         if self.state.eql? 'request'
           self.state = 'confirm'
+          Spree::Bus.publish :reservation_confirmed, participant: self
         elsif self.state.eql? 'confirm'
           self.state = 'complete'
         else
